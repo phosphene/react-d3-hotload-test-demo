@@ -1,7 +1,7 @@
 react-d3-hotload-test-demo
 =====================
 
-The minimal dev environment to enable live-editing React components.
+A dev environment for live-editing React components, focused on d3 development and informed by tests.
 
 ### Usage
 
@@ -31,7 +31,7 @@ npm run lint
 
 ### Test
 
-Karma runner runs jasmine tests using PhantomJS
+Karma runner runs Jasmine tests using PhantomJS
 
 ```
 npm run test
