@@ -3,6 +3,10 @@ react-d3-hotload-test-demo
 
 A dev environment for live-editing React components, focused on d3 development and informed by tests.
 
+The approach chosen here is to use (d3act) https://github.com/AnSavvides/d3act as it uses a clean separation of d3 and React.
+
+
+
 ### Usage
 
 
@@ -31,7 +35,9 @@ npm run lint
 
 ### Test
 
-Karma Jasmine tests with PhantomJS
+Enzyme Jasmine testing
+
+(enzyme)[https://github.com/airbnb/enzyme]
 
 ```
 npm run test
@@ -44,7 +50,7 @@ You may want to change the host in `server.js` and `webpack.config.js` from `loc
 
 #### Dependencies
 
-
+* [d3act](https://github.com/AnSavvides/d3act)
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
 * [babel-loader](https://github.com/babel/babel-loader)
 * [react-hot-loader](https://github.com/gaearon/react-hot-loader)
