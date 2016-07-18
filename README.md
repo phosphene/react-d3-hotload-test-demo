@@ -3,7 +3,7 @@ react-d3-hotload-test-demo
 
 A dev environment for live-editing React components, focused on d3 development and informed by tests.
 
-The approach chosen here is to use (d3act) https://github.com/AnSavvides/d3act as it uses a clean separation of d3 and React.
+The approach chosen here is to use [d3act](https://github.com/AnSavvides/d3act) as it uses a clean separation of d3 and React.
 
 
 
