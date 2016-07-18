@@ -1,7 +1,7 @@
 {
-  "name": "react-hot-boilerplate",
+  "name": "react-d3-hotload-test-demo",
   "version": "1.0.0",
-  "description": "Boilerplate for ReactJS project with hot code reloading",
+  "description": "ReactJS project with hot code reloading",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/react-hot-boilerplate.git"
+    "url": "https://github.com/phosphene/react-d3-hotload-test-demo.git"
   },
   "keywords": [
     "react",
@@ -26,9 +26,9 @@
   "author": "Phosphene (http://github.com/phosphene)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gaearon/react-hot-boilerplate/issues"
+    "url": "https://github.com/phosphene/react-d3-hotload-test-demo/issues"
   },
-  "homepage": "https://github.com/gaearon/react-hot-boilerplate",
+  "homepage": "https://github.com/phosphene/react-d3-hotload-test-demo",
   "devDependencies": {
     "babel-core": "^6.0.20",
     "babel-eslint": "^4.1.3",

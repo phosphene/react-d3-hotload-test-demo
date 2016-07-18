@@ -1,4 +1,4 @@
-react-hot-boilerplate
+react-d3-hotload-test-demo
 =====================
 
 The minimal dev environment to enable live-editing React components.
@@ -11,7 +11,7 @@ npm start
 open http://localhost:3000
 ```
 
-Now edit `src/App.js`.  
+Now edit `src/App.js`.
 Your changes will appear without reloading the browser like in [this video](http://vimeo.com/100010922).
 
 ### Linting
