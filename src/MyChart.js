@@ -12,8 +12,8 @@ export default class MyChart extends React.Component {
 
         this.state = {
             data: [
-                { xValue: "React", yValue: 2 },
-                { xValue: "Relay", yValue: 12 },
+                { xValue: "React", yValue: 3 },
+                { xValue: "Relay", yValue: 13 },
                 { xValue: "GraphQL", yValue: 5 },
                 { xValue: "Radium", yValue: 7 },
                 { xValue: "Babel", yValue: 5 },
@@ -25,8 +25,8 @@ export default class MyChart extends React.Component {
         setTimeout(() => {
             this.setState({
                 data: [
-                    { xValue: "React", yValue: 2 },
-                    { xValue: "Relay", yValue: 8 },
+                    { xValue: "React", yValue: 4 },
+                    { xValue: "Relay", yValue: 24 },
                     { xValue: "GraphQL", yValue: 15 },
                     { xValue: "Radium", yValue: 27 },
                     { xValue: "Babel", yValue: 5 },
