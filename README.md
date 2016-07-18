@@ -37,7 +37,7 @@ npm run lint
 
 Enzyme Jasmine testing
 
-(enzyme)[https://github.com/airbnb/enzyme]
+[enzyme](https://github.com/airbnb/enzyme)
 
 ```
 npm run test
