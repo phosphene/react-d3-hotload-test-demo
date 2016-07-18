@@ -8,12 +8,13 @@ A dev environment for live-editing React components, focused on d3 development a
 
     $ npm install
 
-should install your packages. You will need a relative current npm and node
-current npm version is 3.10.5 and current node is v6.2.2
+Should install your packages. You will need a relatively current npm and Node.js.
 
+Current npm version is 3.10.5 and current node is v6.2.2
 
 
      $ npm start
+
      open http://localhost:3000
 
 Now edit `src/MyChart.js`.
@@ -28,10 +29,9 @@ React-friendly ESLint configuration.
 npm run lint
 ```
 
-
 ### Test
 
-Karma runner runs Jasmine tests using PhantomJS
+Karma Jasmine tests with PhantomJS
 
 ```
 npm run test
