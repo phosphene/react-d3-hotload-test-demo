@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
-import MyChart from '../src/MyChart';
+import MyChart from '../src/components/MyChart';
 import jasmineEnzyme from 'jasmine-enzyme';
 
 describe("draw", function() {
