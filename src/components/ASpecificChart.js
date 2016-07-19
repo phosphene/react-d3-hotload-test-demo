@@ -53,4 +53,5 @@ export default class ASpecificChart {
     unmount() {
         this.el.remove();
     }
+
 }
