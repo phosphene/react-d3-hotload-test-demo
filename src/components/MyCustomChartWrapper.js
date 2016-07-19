@@ -1,9 +1,9 @@
 import d3 from "d3";
 import React from "react";
 import { render } from "react-dom";
-import d3act from "d3act";
 
-import Chart from 'd3act';
+
+import Chart from "./Chart";
 
 import ASpecificChart from './ASpecificChart';
 

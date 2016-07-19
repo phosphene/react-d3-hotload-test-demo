@@ -5,6 +5,10 @@ A dev environment for live-editing React components, focused on d3 development a
 
 The approach chosen here is to use [d3act](https://github.com/AnSavvides/d3act) as it uses a clean separation of d3 and React.
 
+In fact, we have copied d3act's classes into our src/components directory so that the reasoning is obvious and can be thought through and extended with ease.
+
+
+
 
 
 ### Usage
@@ -21,7 +25,7 @@ Current npm version is 3.10.5 and current node is v6.2.2
 
      open http://localhost:3000
 
-Now edit `src/MyChart.js`.
+Now edit `src/components/MyChart.js`.
 
 Your changes will appear without reloading the browser
 

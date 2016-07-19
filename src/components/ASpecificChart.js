@@ -1,6 +1,5 @@
 import d3 from "d3";
 import React from "react";
-import BaseChart from "d3act"
 
 
 export default class ASpecificChart {
