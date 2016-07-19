@@ -27,7 +27,7 @@ export default class MyChart extends React.Component {
                 data: [
                     { xValue: "React", yValue: 4 },
                     { xValue: "Relay", yValue: 24 },
-                    { xValue: "GraphQL", yValue: 15 },
+                    { xValue: "GraphQL", yValue: 10 },
                     { xValue: "Radium", yValue: 27 },
                     { xValue: "Babel", yValue: 5 },
                 ]
@@ -35,13 +35,33 @@ export default class MyChart extends React.Component {
         }, 3000);
     }
 
+
+    componentDidUpdate() {
+        setTimeout(() => {
+            this.setState({
+                data: [
+                    { xValue: "React", yValue: 16 },
+                    { xValue: "Relay", yValue: 24 },
+                    { xValue: "GraphQL", yValue: 10 },
+                    { xValue: "Radium", yValue: 25 },
+                    { xValue: "Babel", yValue: 5 },
+                ]
+            })
+        }, 1000);
+    }
+
+
+
+
+
+
     render() {
         return (
             <div>
-                <h2>Bar Chart</h2>
+                <h2>A Bar Chart</h2>
                 <Chart
                     type={"bar"}
-                    width={500}
+                    width={600}
                     height={500}
                     margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
                     showTooltips={true}

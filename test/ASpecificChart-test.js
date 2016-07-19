@@ -9,19 +9,13 @@ describe("draw", function() {
             jasmineEnzyme();
         });
 
-    const wrapper = mount(<MyCustomChartWrapper/>);
-
-    it("should render chart element", function() {
-        expect(wrapper.find('.chart')).toBePresent();
-    });
-
+    const wrapper = shallow(<MyCustomChartWrapper/>);
 
 
     it("should render Chart element", function() {
         expect(wrapper.find('Chart')).toBePresent();
         console.log(wrapper.debug());
     });
-
 
 
 });
