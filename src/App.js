@@ -3,7 +3,7 @@ import Layout from './Layout';
 import Counter from './Counter';
 
 import MyChart from "./components/MyChart";
-//import MyCustomChartWrapper from "./MyCustomChartWrapper";
+import MyCustomChartWrapper from "./components/MyCustomChartWrapper";
 
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,
@@ -18,6 +18,7 @@ export default class App extends Component {
       <Layout>
        <Counter/>
             <MyChart/>
+            <MyCustomChartWrapper/>
       </Layout>
     );
   }
