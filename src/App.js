@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Layout from './Layout';
 import Counter from './Counter';
 
-import MyChart from "./components/MyChart";
-import MyCustomChartWrapper from "./components/MyCustomChartWrapper";
+import MyChart from "./components/wraps/MyChart";
+import MyCustomChartWrapper from "./components/wraps/MyCustomChartWrapper";
 
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,

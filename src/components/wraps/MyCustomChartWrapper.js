@@ -3,9 +3,9 @@ import React from "react";
 import { render } from "react-dom";
 
 
-import Chart from "./Chart";
+import Chart from "../lib/Chart";
 
-import ASpecificChart from './ASpecificChart';
+import ASpecificChart from '../charts/ASpecificChart';
 
 //this is merely a wrapper for d3act
 //in this first raw implementation, we have our data here as well as our render function
