@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from "react-dom";
-//import {setFixtures} from "jasmine-jquery";
+//import jasmine-jquery from "jasmine-jquery";
 import $ from 'jquery';
 import jQuery from 'jquery';
 
@@ -13,21 +13,19 @@ import jasmime_dom_matchers from 'jasmine_dom_matchers';
 
 describe("draw", function() {
 
-        beforeEach(() => {
-            jasmineEnzyme();
-        });
 
     const wrapper = mount(<MyCustomChartWrapper/>);
 
 
-
     it("should render chart element", function() {
+        jasmineEnzyme();
         expect(wrapper.find('div')).toBePresent();
     });
 
 
     it("should render Chart element", function() {
-        //expect(wrapper.find('Chart')).toBePresent();
+
+
         const chart = wrapper.find('.chart');
         //console.log(wrapper.find('.chart'));
         //console.log(chart.get(1).debug());
@@ -35,6 +33,10 @@ describe("draw", function() {
 
         //expect(wrapper.find('g')).toBePresent();
         const myNode = chart.node;
+
+
+
+        //expect(wrapper.find('Chart')).toBePresent();
         console.log(myNode);
 //        var createFragment = require('react-addons-create-fragment');
   //      var frag = createFragment(myNode);
@@ -46,20 +48,9 @@ describe("draw", function() {
         expect(myNode).toHaveClass("chart");
         expect(myNode).toExist('svg');
 
+       //expect(myNode).toContainElement('svg');
+        console.log($(myNode).find('svg'));
 
-
-        // var Fixture = React.createClass({
-        //     render: function() {
-        //         return (
-        //                 <div>
-        //                 {frag}
-        //             </div>
-        //         );
-        //     }
-        // });
-
-        // const wrap =  mount(<Fixture/>);
-        // //console.log(wrap);
 
 
     });
