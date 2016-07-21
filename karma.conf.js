@@ -7,7 +7,6 @@ module.exports = function(config) {
           'jasmine'
       ],
     files: [
-        'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
    'test/**/*.js'
     ],
 
