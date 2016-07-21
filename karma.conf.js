@@ -3,9 +3,12 @@ var path = require('path');
 module.exports = function(config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine'],
+      frameworks:[
+          'jasmine'
+      ],
     files: [
-      'test/**/*.js'
+        'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
+   'test/**/*.js'
     ],
 
     preprocessors: {

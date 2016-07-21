@@ -1,20 +1,23 @@
 import React from 'react';
+import { findDOMNode } from "react-dom";
 import { shallow, mount, render } from 'enzyme';
-import MyCustomChartWrapper from '../src/components/wraps/MyCustomChartWrapper';
+import ASpecificChart from '../src/components/charts/ASpecificChart';
 import jasmineEnzyme from 'jasmine-enzyme';
 
-describe("draw", function() {
+xdescribe("draw", function() {
 
         beforeEach(() => {
             jasmineEnzyme();
         });
 
-    const wrapper = shallow(<MyCustomChartWrapper/>);
+
+
+    const wrapper = mount(<ASpecificChart/>);
 
 
     it("should render Chart element", function() {
         expect(wrapper.find('Chart')).toBePresent();
-        console.log(wrapper.debug());
+        //console.log(wrapper.debug());
     });
 
 
