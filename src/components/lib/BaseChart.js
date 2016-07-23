@@ -1,4 +1,9 @@
 import d3 from "d3";
+import {scaleOrdinal} from "d3-scale";
+import {schemeAccent} from "d3-scale-chromatic";
+import {axisBottom, axisLeft} from 'd3-axis';
+import {select, selectAll}  from 'd3-selection';
+import {max} from 'd3-array'
 
 const chartConfig = {
     showTooltips: true,
@@ -26,12 +31,13 @@ export default class BaseChart {
 
     // Overwrite this function to apply your own color scheme
     getColor() {
-        return d3.scale.category20c();
+        return scaleOrdinal(schemeAccent);
+        //return d3.scale.category20c();
     }
 
     // We don't show tooltips by default
     addTooltips() {
-        this.tooltip = d3.select(this.el)
+        this.tooltip = select(this.el)
             .append("div")
             .classed("d3act-tooltip", true)
             .style("position", "absolute")

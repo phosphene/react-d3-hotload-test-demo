@@ -1,4 +1,4 @@
-import d3 from "d3";
+import * as d3 from "d3";
 import React from "react";
 
 
@@ -35,6 +35,9 @@ export default class ASpecificChart {
             .attr("height", height)
             .append("g")
                 .attr("transform", `translate(${halfWidth}, ${halfHeight})`);
+
+
+
 
         const path = svg.selectAll("path")
             .data(pie(d3.entries(data)))

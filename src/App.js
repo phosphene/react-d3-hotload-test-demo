@@ -4,7 +4,8 @@ import Counter from './Counter';
 
 import MyChart from "./components/wraps/MyChart";
 import MyCustomChartWrapper from "./components/wraps/MyCustomChartWrapper";
-import ScatterplotTourChartWrapper from "./components/wraps/ScatterplotTourChartWrapper.js";
+import AScatterPlotTourChartWrapper from "./components/wraps/AScatterPlotTourChartWrapper.js";
+
 
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,
@@ -19,8 +20,7 @@ export default class App extends Component {
       <Layout>
        <Counter/>
             <MyChart/>
-            <MyCustomChartWrapper/>
-            <ScatterplotTourChartWrapper/>
+
       </Layout>
     );
   }

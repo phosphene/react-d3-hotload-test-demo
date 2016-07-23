@@ -1,21 +1,25 @@
 import d3 from "d3";
+import {scaleOrdinal, scaleLinear} from "d3-scale";
 import BaseChart from "./BaseChart";
+import {axisBottom, axisLeft} from 'd3-axis';
+import {select, selectAll}  from 'd3-selection';
+import {max} from 'd3-array'
 
 export default class BarChart extends BaseChart {
     getScaleX() {
-        return d3.scale.ordinal().rangeRoundBands([0, this.props.width], 0.1);
+        return scaleOrdinal().range([0, this.props.width], 0.1);
     }
 
     getScaleY() {
-        return d3.scale.linear().range([this.props.height, 0]);
+        return scaleLinear().range([this.props.height, 0]);
     }
 
     createAxisX(x) {
-        return d3.svg.axis().scale(x).orient("bottom");
+        return axisBottom().scale(x);
     }
 
     createAxisY(y) {
-        return d3.svg.axis().scale(y).orient("left");
+        return axisLeft().scale(y);
     }
 
     onMouseOver(d) {
@@ -34,14 +38,14 @@ export default class BarChart extends BaseChart {
         const width = this.props.width + this.props.margin.left + this.props.margin.right;
         const height = this.props.height + this.props.margin.top + this.props.margin.bottom;
 
-        this.svg = d3.select(this.el).append("svg")
+        this.svg = select(this.el).append("svg")
             .attr("width", width)
             .attr("height", height)
             .append("g")
                 .attr("transform", `translate(${this.props.margin.left}, ${this.props.margin.top})`);
 
         this.x.domain(data.map(d => { return d.xValue; }));
-        this.y.domain([0, d3.max(data, d => { return d.yValue; })]);
+        this.y.domain([0, max(data, d => { return d.yValue; })]);
 
         this.svg.append("g")
             .attr("class", "x axis")
@@ -62,7 +66,7 @@ export default class BarChart extends BaseChart {
         .enter().append("rect")
             .attr("class", "bar")
             .attr("x", d => { return this.x(d.xValue); })
-            .attr("width", this.x.rangeBand())
+            .attr("width", this.x.range)
             .attr("y", d => { return this.y(d.yValue); })
             .attr("height", d => { return this.props.height - this.y(d.yValue); })
             .on("mouseover", this.onMouseOver.bind(this))
@@ -82,7 +86,7 @@ export default class BarChart extends BaseChart {
 
     update(data) {
         // Recalculate domain given new data
-        this.y.domain([0, d3.max(data, d => { return d.yValue; })]);
+        this.y.domain([0, max(data, d => { return d.yValue; })]);
         this.x.domain(data.map(d => { return d.xValue; }));
 
         // We now have an updated Y axis
