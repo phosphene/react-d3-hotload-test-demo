@@ -1,4 +1,4 @@
-import d3 from "d3";
+import * as d3 from "d3";
 import React from "react";
 
 
@@ -10,7 +10,7 @@ export default class ASpecificChart {
 
 
     getColor() {
-        return d3.scale.category20c();
+        return d3.scaleOrdinal(d3.schemeAccent);
     }
 
     create(data) {
@@ -23,12 +23,12 @@ export default class ASpecificChart {
         const halfWidth = width / 2;
         const halfHeight = height / 2;
 
-        const arc = d3.svg.arc()
+        const arc = d3.arc().innerRadius(0)
             .outerRadius(radius - 10);
 
-        const pie = d3.layout.pie()
-            .sort(null)
-            .value(d => { return d.value; });
+        const pie = d3.pie()
+            .value(d => { return d.value; })
+            .sort(null);
 
         const svg = d3.select(this.el).append("svg")
             .attr("width", width)
