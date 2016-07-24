@@ -1,25 +1,21 @@
-import d3 from "d3";
-import {scaleOrdinal, scaleLinear} from "d3-scale";
+import * as d3 from "d3";
 import BaseChart from "./BaseChart";
-import {axisBottom, axisLeft} from 'd3-axis';
-import {select, selectAll}  from 'd3-selection';
-import {max} from 'd3-array'
 
 export default class BarChart extends BaseChart {
     getScaleX() {
-        return scaleOrdinal().range([0, this.props.width], 0.1);
+        return d3.scaleOrdinal().range([0, this.props.width], 0.1);
     }
 
     getScaleY() {
-        return scaleLinear().range([this.props.height, 0]);
+        return d3.scaleLinear().range([this.props.height, 0]);
     }
 
     createAxisX(x) {
-        return axisBottom().scale(x);
+        return d3.axisBottom().scale(x);
     }
 
     createAxisY(y) {
-        return axisLeft().scale(y);
+        return d3.axisLeft().scale(y);
     }
 
     onMouseOver(d) {
@@ -66,7 +62,7 @@ export default class BarChart extends BaseChart {
         .enter().append("rect")
             .attr("class", "bar")
             .attr("x", d => { return this.x(d.xValue); })
-            .attr("width", this.x.range)
+            .attr("width", this.x.bandwidth())
             .attr("y", d => { return this.y(d.yValue); })
             .attr("height", d => { return this.props.height - this.y(d.yValue); })
             .on("mouseover", this.onMouseOver.bind(this))
@@ -112,6 +108,6 @@ export default class BarChart extends BaseChart {
                 .attr("y", d => { return this.y(d.yValue); })
                 .attr("height", d => { return this.props.height - this.y(d.yValue); })
                 .attr("x", d => { return this.x(d.xValue); })
-                .attr("width", this.x.rangeBand());
+                .attr("width", this.x.bandwidth());
     }
 }
