@@ -15,7 +15,7 @@ export default class BaseChart {
 
         Object.keys(chartConfig).forEach(configKey => {
             // If a prop is defined, let's just use it, otherwise
-            // fall back to the default.
+            // fallback to the default.
             if (this.props[configKey] !== undefined) {
                 this[configKey] = this.props[configKey];
             } else {
@@ -26,7 +26,7 @@ export default class BaseChart {
 
     // Overwrite this function to apply your own color scheme
     getColor() {
-        return d3.scaleOrdinal(d3.schemeAccent);
+        return d3.scaleOrdinal(d3.schemeCategory20b);
     }
 
     // We don't show tooltips by default
