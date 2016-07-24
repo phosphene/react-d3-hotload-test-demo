@@ -1,9 +1,4 @@
-import d3 from "d3";
-import {scaleOrdinal} from "d3-scale";
-import {schemeAccent} from "d3-scale-chromatic";
-import {axisBottom, axisLeft} from 'd3-axis';
-import {select, selectAll}  from 'd3-selection';
-import {max} from 'd3-array'
+import * as d3 from "d3";
 
 const chartConfig = {
     showTooltips: true,
@@ -20,7 +15,7 @@ export default class BaseChart {
 
         Object.keys(chartConfig).forEach(configKey => {
             // If a prop is defined, let's just use it, otherwise
-            // fall back to the default.
+            // fallback to the default.
             if (this.props[configKey] !== undefined) {
                 this[configKey] = this.props[configKey];
             } else {
@@ -31,13 +26,12 @@ export default class BaseChart {
 
     // Overwrite this function to apply your own color scheme
     getColor() {
-        return scaleOrdinal(schemeAccent);
-        //return d3.scale.category20c();
+        return d3.scaleOrdinal(d3.schemeCategory20b);
     }
 
     // We don't show tooltips by default
     addTooltips() {
-        this.tooltip = select(this.el)
+        this.tooltip = d3.select(this.el)
             .append("div")
             .classed("d3act-tooltip", true)
             .style("position", "absolute")
