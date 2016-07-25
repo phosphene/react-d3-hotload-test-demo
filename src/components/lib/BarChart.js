@@ -3,7 +3,7 @@ import BaseChart from "./BaseChart";
 
 export default class BarChart extends BaseChart {
     getScaleX() {
-        return d3.scaleOrdinal().range([0, this.props.width], 0.1);
+        return d3.scaleBand().range([0, this.props.width], 0.1);
     }
 
     getScaleY() {
@@ -34,14 +34,14 @@ export default class BarChart extends BaseChart {
         const width = this.props.width + this.props.margin.left + this.props.margin.right;
         const height = this.props.height + this.props.margin.top + this.props.margin.bottom;
 
-        this.svg = select(this.el).append("svg")
+        this.svg = d3.select(this.el).append("svg")
             .attr("width", width)
             .attr("height", height)
             .append("g")
                 .attr("transform", `translate(${this.props.margin.left}, ${this.props.margin.top})`);
 
         this.x.domain(data.map(d => { return d.xValue; }));
-        this.y.domain([0, max(data, d => { return d.yValue; })]);
+        this.y.domain([0, d3.max(data, d => { return d.yValue; })]);
 
         this.svg.append("g")
             .attr("class", "x axis")
@@ -82,7 +82,7 @@ export default class BarChart extends BaseChart {
 
     update(data) {
         // Recalculate domain given new data
-        this.y.domain([0, max(data, d => { return d.yValue; })]);
+        this.y.domain([0, d3.max(data, d => { return d.yValue; })]);
         this.x.domain(data.map(d => { return d.xValue; }));
 
         // We now have an updated Y axis

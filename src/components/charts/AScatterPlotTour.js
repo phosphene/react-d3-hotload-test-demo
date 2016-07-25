@@ -1,5 +1,4 @@
-import d3 from "d3";
-//import {randomNormal} from "d3-random";
+import * as d3 from "d3";
 import React from "react";
 
 
@@ -11,31 +10,10 @@ export default class AScatterPlotTour {
 
 
     getColor() {
-        return d3.scale.category20c();
+        return d3.scaleOrdinal(d3.schemeCategory20b);
     }
 
 
-
-    zoomed() {
-        var transform = d3.event.transform,
-        zx = transform.rescaleX(x),
-        zy = transform.rescaleY(y);
-
-        gx.call(xAxis.scale(zx));
-        gy.call(yAxis.scale(zy));
-
-        context.clearRect(0, 0, width, height);
-        for (var j = 0, m = pointsets.length; j < m; ++j) {
-            context.beginPath();
-            context.fillStyle = d3.schemeCategory10[j];
-            for (var points = pointsets[j], i = 0, n = points.length, p, px, py; i < n; ++i) {
-                p = points[i], px = zx(p[0]), py = zy(p[1]);
-                context.moveTo(px + 2.5, py);
-                context.arc(px, py, 2.5, 0, 2 * Math.PI);
-            }
-            context.fill();
-        }
-    }
 
 
 
@@ -43,46 +21,38 @@ export default class AScatterPlotTour {
     create(data) {
 
 
-        const random = d3.randomNormal(0, 0.2),
-        sqrt3 = Math.sqrt(3),
-        points0 = d3.range(300).map(function() { return [random() + sqrt3, random() + 1]; }),
-        points1 = d3.range(300).map(function() { return [random() - sqrt3, random() + 1]; }),
-        points2 = d3.range(300).map(function() { return [random(), random() - 1]; }),
-        pointsets = [points0, points1, points2],
-        points = d3.merge([points0, points1, points2]),
-        index = -1;
-
-        const context = d3.select("canvas").node().getContext("2d"),
-        svg = d3.select("svg"),
-        width = +svg.attr("width"),
-        height = +svg.attr("height");
+        this.context = d3.select(this.el).append("canvas").node().getContext("2d"),
+        this.svg = d3.select("canvas").append("svg"),
+        this.width = +this.svg.attr("width"),
+        this.height = +this.svg.attr("height");
 
 
-       const k = height / width,
-        x = d3.scaleLinear().domain([-4.5, 4.5]).range([0, width]),
-        y = d3.scaleLinear().domain([-4.5 * k, 4.5 * k]).range([height, 0]),
+        const k = this.height / this.width,
+        x = d3.scaleLinear().domain([-4.5, 4.5]).range([0, this.width]),
+        y = d3.scaleLinear().domain([-4.5 * k, 4.5 * k]).range([this.height, 0]),
         z = d3.schemeCategory10;
 
         const xAxis = d3.axisTop(x).ticks(12);
-        const yAxis = d3.axisRight(y).ticks(12 * height / width);
+        const yAxis = d3.axisRight(y).ticks(12 * this.height / this.width);
 
         const zoom = d3.zoom()
-            .on("zoom", zoomed);
+            .on("zoom", myZoomed());
 
         const gx = svg.append("g")
             .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + (height - 10) + ")")
+            .attr("transform", "translate(0," + (this.height - 10) + ")")
             .call(xAxis);
 
-        var gy = svg.append("g")
+        const gy = svg.append("g")
             .attr("class", "axis axis--y")
             .attr("transform", "translate(10,0)")
             .call(yAxis);
 
-        svg.selectAll(".domain")
+
+        this.svg.selectAll(".domain")
             .style("display", "none");
 
-        svg.call(zoom.transform, d3.zoomIdentity);
+        this.svg.call(zoom.transform, d3.zoomIdentity);
 
         d3.interval(function() {
             var pointset = pointsets[i = (i + 1) % (pointsets.length + 1)] || points,
@@ -90,16 +60,46 @@ export default class AScatterPlotTour {
             x1 = x(d3.max(pointset, function(d) { return d[0]; })),
             y0 = y(d3.max(pointset, function(d) { return d[1]; })),
             y1 = y(d3.min(pointset, function(d) { return d[1]; })),
-            k = 0.9 / Math.max((x1 - x0) / width, (y1 - y0) / height),
-            tx = (width - k * (x0 + x1)) / 2,
-            ty = (height - k * (y0 + y1)) / 2;
+            k = 0.9 / Math.max((x1 - x0) / this.width, (y1 - y0) / this.height),
+            tx = (this.width - k * (x0 + x1)) / 2,
+            ty = (this.height - k * (y0 + y1)) / 2;
 
-            svg.transition()
+            this.svg.transition()
                 .duration(1500)
                 .call(zoom.transform, d3.zoomIdentity
                       .translate(tx, ty)
                       .scale(k));
         }, 2500);
+
+
+        function myZoomed() {
+
+            zx = d3.event.transform.rescaleX(x);
+            zy = d3.event.transform.rescaleY(y);
+
+            gx.call(xAxis.scale(zx));
+            gy.call(yAxis.scale(zy));
+
+            context.clearRect(0, 0, width, height);
+            for (var j = 0, m = pointsets.length; j < m; ++j) {
+                this.context.beginPath();
+                this.context.fillStyle = d3.schemeCategory10[j];
+                for (var points = pointsets[j], i = 0, n = points.length, p, px, py; i < n; ++i) {
+                    p = points[i], px = zx(p[0]), py = zy(p[1]);
+                    context.moveTo(px + 2.5, py);
+                    context.arc(px, py, 2.5, 0, 2 * Math.PI);
+                }
+                this.context.fill();
+            }
+        }
+
+
+
+
+
+
+
+
 
     }
 

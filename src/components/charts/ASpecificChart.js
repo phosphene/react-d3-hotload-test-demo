@@ -10,7 +10,8 @@ export default class ASpecificChart {
 
 
     getColor() {
-        return d3.scaleOrdinal(d3.schemeAccent);
+       return d3.scaleOrdinal(d3.schemeCategory20b);
+       //return d3.scaleOrdinal(d3.schemeAccent);
     }
 
     create(data) {

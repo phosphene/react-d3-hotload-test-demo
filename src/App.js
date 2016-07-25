@@ -4,8 +4,8 @@ import Counter from './Counter';
 
 import MyChart from "./components/wraps/MyChart";
 import MyCustomChartWrapper from "./components/wraps/MyCustomChartWrapper";
-import AScatterPlotTourChartWrapper from "./components/wraps/AScatterPlotTourChartWrapper.js";
-
+import AScatterPlotTourChartWrapper from "./components/wraps/AScatterPlotTourChartWrapper";
+import ReactBubbleChart from "./components/wraps/ReactBubbleChart";
 
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,
@@ -20,7 +20,7 @@ export default class App extends Component {
       <Layout>
        <Counter/>
             <MyChart/>
-
+            <ReactBubbleChart/>
       </Layout>
     );
   }
