@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import Layout from './Layout';
 import Counter from './Counter';
 
-import MyChart from "./components/wraps/MyChart";
-import MyCustomChartWrapper from "./components/wraps/MyCustomChartWrapper";
-import AScatterPlotTourChartWrapper from "./components/wraps/AScatterPlotTourChartWrapper";
-import ReactBubbleChart from "./components/wraps/ReactBubbleChart";
+import MyChart from "./wraps/MyChart";
+import MyCustomChartWrapper from "./wraps/MyCustomChartWrapper";
+import AScatterPlotTourChartWrapper from "./wraps/AScatterPlotTourChartWrapper";
+import ReactBubbleChart from "./wraps/ReactBubbleChart";
 
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,

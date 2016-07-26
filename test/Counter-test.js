@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
-import Counter from '../src/Counter';
+import Counter from '../src/components/Counter';
 
 describe("A suite", function() {
 //basic spec that proves that specs work!
