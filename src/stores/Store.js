@@ -1,27 +1,25 @@
-import { observable, computed } from 'mobx'
+import * as d3 from 'd3';
 
-class Store {
+import  { observable, computed } from 'mobx';
+
+export default class Store {
     //Autorun is a function from MobX that runs everytime that something inside is
-    //updated. In the example below, everytime 'numClicks' is updated, autorun will run
-    //the console.warn
-    //
-    // import {autorun} from 'mobx'
-    // constructor() {
-    //   autorun(() => console.warn('MobX autorun - Whenever numClicks has it value updated, console.log runs: ', this.numClicks))
-    // }
-
-    name = 'Reaxor';
-    description = 'React boilerplate for better state management, styling, testing and cleaner code';
+    name = "blah";
     @observable numClicks = 0;
 
-    @computed get oddOrEven() {
-        return this.numClicks % 2 === 0 ? 'even' : 'odd'
-    }
+    //  @computed get oddOrEven() {
+    //      return this.numClicks % 2 === 0 ? 'even' : 'odd'
+    //  }
 
+    //    var data = d3.csvParse(string);
+    //psv = d3.dsvFormat("|");
 
-    clickButton = () => {
-        this.numClicks++
-    }
+    //muumble = psv.parse("foo|bar\n1|2");
+
+    @observable experiments =  d3.csv.parse("morley.csv", function(error, experiments) {
+        experiments.forEach(function(x) {
+            x.Speed = +x.Speed;
+        });
+    });
+
 }
-
-export default Store
