@@ -12,7 +12,7 @@ class ReactBubbleChart extends React.Component {
 
   /** Render town */
   render() {
-    return <div className={"bubble-chart-container " + this.props.className}></div>;
+    return <div className={"chart-container " + this.props.className}></div>;
   }
 
   /** When we mount, intialize resize handler and create the bubbleChart */

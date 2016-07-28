@@ -16,11 +16,18 @@ export default class Store {
 
 //    muumble = psv.parse("foo|bar\n1|2");
 
-    @observable experiments =  d3.csv.parse("morley.csv", function(error, experiments) {
+    @observable experiments = '';
+
+    @computed get myMorleyBar() {
+
+     return this.experiments =  d3.csv.parse("morley.csv", function(error, experiments) {
         experiments.forEach(function(x) {
             x.Speed = +x.Speed;
         });
     });
+
+
+}
 
                                           // ndx = crossfilter(experiments);
 }
