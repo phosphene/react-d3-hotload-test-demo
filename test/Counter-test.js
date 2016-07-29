@@ -6,10 +6,10 @@ describe("A suite", function() {
 //basic spec that proves that specs work!
 
   it("contains spec with an expectation", function() {
-    expect(shallow(<Counter />).find('h2').length).toBe(1);
+      expect(shallow(<Counter store={this.props.appState}/>).find('h2').length).toBe(1);
   });
 
   it("can run an expectation with render", function() {
-    expect(render(<Counter />).find('h2').length).toBe(1);
+      expect(render(<Counter store={this.props.appState}/>).find('h2').length).toBe(1);
   });
 });

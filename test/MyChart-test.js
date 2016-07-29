@@ -3,7 +3,7 @@ import { shallow, mount, render } from 'enzyme';
 import MyChart from '../src/components/wraps/MyChart';
 import jasmineEnzyme from 'jasmine-enzyme';
 
-describe("draw", function() {
+xdescribe("draw", function() {
 
         beforeEach(() => {
             jasmineEnzyme();

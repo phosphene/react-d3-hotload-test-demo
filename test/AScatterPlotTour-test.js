@@ -11,7 +11,7 @@ import AScatterPlotTour from '../src/components/charts/AScatterPlotTour';
 import jasmineEnzyme from 'jasmine-enzyme';
 import jasmime_dom_matchers from 'jasmine_dom_matchers';
 
-describe("draw", function() {
+xdescribe("draw", function() {
 
 
     const wrapper = mount(<AScatterPlotTourChartWrapper/>);
