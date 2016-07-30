@@ -7,18 +7,22 @@ export default class BarSingleSelectDC {
 
     constructor(el, props = {}) {
         console.log(props)
-        //const experiments = props.data;
-        const chart = barChart("#test");
+        this.chart = barChart("#chart");
+    }
 
 
-        d3.csv("morley.csv", function(error, experiments) {
 
+render() {
+
+    var chart = this.chart;
+
+    d3.csv("morley.csv", function(error, experiments) {
+        experiments.forEach(function(x) {
+            x.Speed = +x.Speed;
+        });
         var ndx                 = crossfilter(experiments),
         runDimension        = ndx.dimension(function(d) {return +d.Run;}),
         speedSumGroup       = runDimension.group().reduceSum(function(d) {return d.Speed * d.Run / 1000;});
-
-
-
         chart
             .width(768)
             .height(480)
@@ -40,14 +44,11 @@ export default class BarSingleSelectDC {
         chart.render();
     });
 
-
 }
 
-  update(el, props) {
-
+  update() {
+      this.chart.filter(null).redrawGroup();
   }
 
 
-  /** Any necessary cleanup */
-  destroy(el) { }
 }
