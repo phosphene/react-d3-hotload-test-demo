@@ -16,7 +16,7 @@ render() {
 
     var chart = this.chart;
 
-    d3.csv("morley.csv", function(error, experiments) {
+    d3.csv("./src/stores/morley.csv", function(error, experiments) {
         experiments.forEach(function(x) {
             x.Speed = +x.Speed;
         });

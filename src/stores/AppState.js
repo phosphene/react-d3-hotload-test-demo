@@ -19,7 +19,7 @@ export default class AppState {
 
     @observable myString = 'blah';
 
-    @observable experiments =    d3.csv("morley.csv", function(error, experiments) {
+    @observable experiments =    d3.csv("./src/stores/morley.csv", function(error, experiments) {
           experiments.forEach(function(x) {
               x.Speed = +x.Speed;
              //console.log(x.Speed);

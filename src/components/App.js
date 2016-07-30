@@ -3,7 +3,8 @@ import Layout from './Layout';
 import Counter from './Counter';
 import { observer } from 'mobx-react';
 import BarSingleSelectWrapper from "./wraps/BarSingleSelectWrapper";
-
+import HeatMapFilteringWrapper from "./wraps/HeatMapFilteringWrapper";
+import BarSingleinOne from "./charts/BarSingleinOne";
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,
 // only synchronous routes are hot reloaded, and
@@ -16,9 +17,8 @@ class App extends Component {
     return (
       <Layout>
        <Counter store={this.props.appState}/>
-
-       <BarSingleSelectWrapper/>
-
+       //<HeatMapFilteringWrapper/>
+          <BarSingleinOne/>
       </Layout>
     );
   }

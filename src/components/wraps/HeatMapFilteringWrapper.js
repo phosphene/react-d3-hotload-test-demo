@@ -1,9 +1,9 @@
-import BarSingleSelectDC from '../charts/BarSingleSelectDC';
+import HeatMapFilteringDC from '../charts/HeatMapFilteringDC';
 import React, {PropTypes}              from 'react';
 import ReactDOM           from 'react-dom';
 
 
-class BarSingleSelectWrapper extends React.Component {
+class HeatMapFilteringWrapper extends React.Component {
 
     constructor(props) {
         super(props);
@@ -11,16 +11,11 @@ class BarSingleSelectWrapper extends React.Component {
     }
 
     render() {
-        const clickReset = () => {
-            this.chart.update();
-
-        }
-
         return (
-                <div id="chart">
                 <div>
-                <a onClick={clickReset}> reset</a>
-                </div>
+                <h2>Michelson–Morley experiment</h2>
+                <div id="heatmap"></div>
+                <div id="barchart"></div>
                 </div>
         );
 
@@ -28,13 +23,13 @@ class BarSingleSelectWrapper extends React.Component {
 
 
     componentDidMount() {
-       this.chart = new BarSingleSelectDC();
+       this.chart = new HeatMapFilteringDC();
        this.chart.render();
 
     }
 
     componentDidUpdate() {
-        this.chart.update();
+     //   this.chart.update();
     }
 
 
@@ -44,4 +39,4 @@ class BarSingleSelectWrapper extends React.Component {
 
 }
 
-export default BarSingleSelectWrapper;
+export default HeatMapFilteringWrapper;
