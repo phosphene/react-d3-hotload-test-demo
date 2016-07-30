@@ -2,16 +2,17 @@ import * as d3 from 'd3';
 //import {crossfilter} from 'crossfilter';
 import {barChart, crossfilter, units} from 'dc';
 
-
+//we can call export at the top of the class declaration
 export default class BarSingleSelectDC {
 
     constructor(el, props = {}) {
         console.log(props)
+        //we initiate chart in constructor
         this.chart = barChart("#chart");
     }
 
 
-
+//and we call render here. this is not a react render. we could call it something else
 render() {
 
     var chart = this.chart;
@@ -45,7 +46,7 @@ render() {
     });
 
 }
-
+// this is the update we call from the wrapper to reset
   update() {
       this.chart.filter(null).redrawGroup();
   }

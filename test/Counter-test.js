@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import Counter from '../src/components/Counter';
 
-describe("A suite", function() {
+xdescribe("A suite", function() {
 //basic spec that proves that specs work!
 
   it("contains spec with an expectation", function() {

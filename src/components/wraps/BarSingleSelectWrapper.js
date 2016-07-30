@@ -11,6 +11,11 @@ class BarSingleSelectWrapper extends React.Component {
     }
 
     render() {
+
+        //note the arrow function
+        //this is sugar that allows us to simplify
+        //see the readme
+        //we use this pattern for resets of the charts
         const clickReset = () => {
             this.chart.update();
 
@@ -43,5 +48,5 @@ class BarSingleSelectWrapper extends React.Component {
     }
 
 }
-
+//always export!
 export default BarSingleSelectWrapper;

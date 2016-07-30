@@ -29,8 +29,6 @@ export default class Counter extends Component {
             <h2>My wonderful Counter: {this.state.counter}</h2>
             <h2>My arbitray number {this.store.numClicks}</h2>
             <h2>My arbitray string {this.store.mumble}</h2>
-
-
           </div>
    );
   }
