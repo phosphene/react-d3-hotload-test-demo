@@ -4,7 +4,7 @@ import Counter from './Counter';
 import { observer } from 'mobx-react';
 import BarSingleSelectWrapper from "./wraps/BarSingleSelectWrapper";
 import HeatMapFilteringWrapper from "./wraps/HeatMapFilteringWrapper";
-
+import VcExampleWrapper from "./wraps/VcExampleWrapper";
 //we are only using observer in the counter not in the charts currently
 //observer is from the mobx library
 //we can discuss it when we need it.
@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <Layout>
        <Counter store={this.props.appState}/>
-       <HeatMapFilteringWrapper/>
+        <VcExampleWrapper/>
       </Layout>
     );
   }
