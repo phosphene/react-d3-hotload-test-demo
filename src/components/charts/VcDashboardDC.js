@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import {barChart, crossfilter, units, geoChoroplethChart, bubbleChart, renderAll} from 'dc';
+import {barChart, crossfilter, units, geoChoroplethChart, bubbleChart, renderAll, redrawAll, filterAll} from 'dc';
 
 //we can call export at the top of the class declaration
 export default class VcDashboardDC {
@@ -17,28 +17,28 @@ export default class VcDashboardDC {
     }
 
 
-//and we call render here. this is not a react render. we could call it something else
-render() {
+    //and we call render here. this is not a react render. we could call it something else
+    render() {
 
-    const numberFormat = this.numberFormat;
-    const usChart = this.usChart;
-    const industryChart = this.industryChart;
-    const roundChart = this.roundChart;
+        const numberFormat = this.numberFormat;
+        const usChart = this.usChart;
+        const industryChart = this.industryChart;
+        const roundChart = this.roundChart;
 
-    d3.csv("src/stores/vc.csv", function (csv) {
-        var data = crossfilter(csv);
+        d3.csv("src/stores/vc.csv", function (csv) {
+            var data = crossfilter(csv);
 
-        var states = data.dimension(function (d) {
-            return d["State"];
-        });
-        var stateRaisedSum = states.group().reduceSum(function (d) {
-            return d["Raised"];
-        });
+            var states = data.dimension(function (d) {
+                return d["State"];
+            });
+            var stateRaisedSum = states.group().reduceSum(function (d) {
+                return d["Raised"];
+            });
 
-        var industries = data.dimension(function (d) {
-            return d["Industry Group"];
-        });
-        var statsByIndustries = industries.group().reduce(
+            var industries = data.dimension(function (d) {
+                return d["Industry Group"];
+            });
+            var statsByIndustries = industries.group().reduce(
                 function (p, v) {
                     p.amountRaised += +v["Raised"];
                     p.deals += +v["Deals"];
@@ -53,12 +53,12 @@ render() {
                 function () {
                     return {amountRaised: 0, deals: 0}
                 }
-        );
+            );
 
-        var rounds = data.dimension(function (d) {
-            return d["RoundClassDescr"];
-        });
-        var statsByRounds = rounds.group().reduce(
+            var rounds = data.dimension(function (d) {
+                return d["RoundClassDescr"];
+            });
+            var statsByRounds = rounds.group().reduce(
                 function (p, v) {
                     p.amountRaised += +v["Raised"];
                     p.deals += +v["Deals"];
@@ -73,10 +73,10 @@ render() {
                 function () {
                     return {amountRaised: 0, deals: 0}
                 }
-        );
+            );
 
-        d3.json("./src/stores/us-states.json", function (statesJson) {
-            usChart.width(990)
+            d3.json("./src/stores/us-states.json", function (statesJson) {
+                usChart.width(990)
                     .height(500)
                     .dimension(states)
                     .group(stateRaisedSum)
@@ -90,7 +90,7 @@ render() {
                         return "State: " + d.key + "\nTotal Amount Raised: " + numberFormat(d.value ? d.value : 0) + "M";
                     });
 
-            industryChart.width(990)
+                industryChart.width(990)
                     .height(200)
                     .margins({top: 10, right: 50, bottom: 30, left: 60})
                     .dimension(industries)
@@ -119,18 +119,18 @@ render() {
                     .renderTitle(true)
                     .title(function (p) {
                         return p.key
-                                + "\n"
-                                + "Amount Raised: " + numberFormat(p.value.amountRaised) + "M\n"
-                                + "Number of Deals: " + numberFormat(p.value.deals);
+                            + "\n"
+                            + "Amount Raised: " + numberFormat(p.value.amountRaised) + "M\n"
+                            + "Number of Deals: " + numberFormat(p.value.deals);
                     });
-            industryChart.yAxis().tickFormat(function (s) {
-                return s + " deals";
-            });
-            industryChart.xAxis().tickFormat(function (s) {
-                return s + "M";
-            });
+                industryChart.yAxis().tickFormat(function (s) {
+                    return s + " deals";
+                });
+                industryChart.xAxis().tickFormat(function (s) {
+                    return s + "M";
+                });
 
-            roundChart.width(990)
+                roundChart.width(990)
                     .height(200)
                     .margins({top: 10, right: 50, bottom: 30, left: 60})
                     .dimension(rounds)
@@ -159,22 +159,42 @@ render() {
                     .renderTitle(true)
                     .title(function (p) {
                         return p.key
-                                + "\n"
-                                + "Amount Raised: " + numberFormat(p.value.amountRaised) + "M\n"
-                                + "Number of Deals: " + numberFormat(p.value.deals);
+                            + "\n"
+                            + "Amount Raised: " + numberFormat(p.value.amountRaised) + "M\n"
+                            + "Number of Deals: " + numberFormat(p.value.deals);
                     });
-            roundChart.yAxis().tickFormat(function (s) {
-                return s + " deals";
-            });
-            roundChart.xAxis().tickFormat(function (s) {
-                return s + "M";
-            });
+                roundChart.yAxis().tickFormat(function (s) {
+                    return s + " deals";
+                });
+                roundChart.xAxis().tickFormat(function (s) {
+                    return s + "M";
+                });
 
-            renderAll();
+                renderAll();
+            });
         });
-    });
 
-  }
+    }
 
+    resetUSChart() {
+        this.usChart.filterAll();
+        redrawAll();
+    }
+
+    resetIndustryChart() {
+        this.industryChart.filterAll();
+        redrawAll();
+    }
+
+    resetRoundChart() {
+        this.roundChart.filterAll();
+        redrawAll();
+    }
+
+    resetALL(){
+        filterAll();
+        redrawAll();
+
+    }
 
 }
