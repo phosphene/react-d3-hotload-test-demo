@@ -3,12 +3,17 @@ react-d3-hotload-test-demo
 
 A dev environment for live-editing React components, focused on d3 development and informed by tests.
 
-The approach chosen here is to use [d3act](https://github.com/AnSavvides/d3act) as it uses a clean separation of d3 and React.
+Currently, the head of the master branch has been cleaned up and only dc.js examples exist in it.
 
-In fact, we have copied d3act's classes into our src/components directory so that the reasoning is obvious and can be thought through and extended with ease.
+You will note the use of Es2015 or Es6 with such syntactic sugar as:
 
+[arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
+And we even have ES7 features in the use of [mobx](https://github.com/mobxjs/mobx)
 
+mobx is currently only there as a demo and is only used in the counter.
+
+the dc.js should be self explanatory. Check the comments in the sinlgebar example.
 
 
 ### Usage
@@ -42,6 +47,8 @@ npm run lint
 Enzyme Jasmine testing
 
 [enzyme](https://github.com/airbnb/enzyme)
+
+currently Jasmine startup is extremely slowwwwww. I'll have to look at that.
 
 ```
 npm run test
