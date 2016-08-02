@@ -40,6 +40,21 @@ here is what the regular html was
 //        <a href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
     render() {
 
+        //style="display: none;"
+        // lets try a style tag the react way ;-)
+        //based on this example
+        /**
+
+            var divStyle = {
+            color: 'white',
+            backgroundImage: 'url(' + imgUrl + ')',
+            WebkitTransition: 'all', // note the capital 'W' here
+            msTransition: 'all' // 'ms' is the only lowercase vendor prefix
+            };
+        **/
+        const aStyle = { display: 'none'};
+
+
         const clickUSReset = () => {
             this.dashboard.resetUSChart();
         }
@@ -58,11 +73,12 @@ here is what the regular html was
         }
 
 
+
         return (
-            <div>
+                <div>
                 <div id="us-chart">
                 <strong>VC Distribution by States (color: total amount raised)</strong>
-                <a className="reset" onClick={clickUSReset} href="#us-chart" >reset</a>
+                <a className="reset" onClick={clickUSReset} style={aStyle} href="#us-chart" >reset</a>
                 <span className="reset" > | Current filter: <span className="filter"></span></span>
 
                 <div className="clearfix"></div>
@@ -72,7 +88,7 @@ here is what the regular html was
 
                 <div id="industry-chart">
                 <strong>By Industries</strong> (y: number of deals, x: total amount raised in millions, radius: amount raised)
-                <a className="reset" onClick={clickIndustryReset} href="#industry-chart">reset</a>
+                <a className="reset" onClick={clickIndustryReset} style={aStyle} href="#industry-chart">reset</a>
 
                 <div className="clearfix"></div>
                 </div>
@@ -81,7 +97,7 @@ here is what the regular html was
 
                 <div id="round-chart">
                 <strong>By Rounds</strong> (y: number of deals, x: total amount raised in millions, radius: amount raised)
-                <a className="reset" onClick={clickRoundReset} href="#round-chart">reset</a>
+                <a className="reset" onClick={clickRoundReset} style={aStyle} href="#round-chart">reset</a>
 
                 <div className="clearfix"></div>
                 </div>
@@ -91,25 +107,25 @@ here is what the regular html was
                 <div>
                 <a onClick={clickAllReset} href="#">Reset All</a>
                 </div>
-            </div>
+                </div>
         );
 
     }
 
 
     componentDidMount() {
-     this.dashboard = new VcDashboardDC();
-     this.dashboard.render();
+        this.dashboard = new VcDashboardDC();
+        this.dashboard.render();
 
     }
 
     componentDidUpdate() {
-     //   this.chart.update();
+        //   this.chart.update();
     }
 
 
     componentWillUnmount() {
-       // this.dashboard.destroy();
+        // this.dashboard.destroy();
     }
 
 }

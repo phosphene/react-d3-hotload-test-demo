@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import {barChart, crossfilter, units, geoChoroplethChart, bubbleChart, renderAll, redrawAll, filterAll} from 'dc';
+import {crossfilter, units, geoChoroplethChart, bubbleChart, renderAll, redrawAll, filterAll} from 'dc';
 
 //we can call export at the top of the class declaration
 export default class VcDashboardDC {
