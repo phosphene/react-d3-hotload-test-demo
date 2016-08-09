@@ -1,4 +1,4 @@
-import BeerDashDC from '../charts/BeerDashDC';
+]import BeerDashDC from '../charts/BeerDashDC';
 import React, {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 
@@ -57,17 +57,17 @@ here is what the regular html was
 
 
         return (
-                <div>
-                <div>
-                <strong>No Bootstrap</strong>
-                </div>
-                </div>
+                // <div>
+                // <div>
+                // <strong>No Bootstrap</strong>
+                // </div>
+                // </div>
 
-                /*<div class="container">
+                <div className="container">
                 <div>
                 <strong>Bootstrap</strong>
                 </div>
-                </div>*/
+                </div>
         );
 
     }
