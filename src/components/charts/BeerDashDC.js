@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import {crossfilter, units, geoChoroplethChart, bubbleChart, renderAll, redrawAll, filterAll} from 'dc';
+import {crossfilter, units, geoChoroplethChart, bubbleChart, renderAll, redrawAll, filterAll, pieChart, barChart, dataCount, dataTable, pluck} from 'dc';
 
 //we can call export at the top of the class declaration
 export default class BeerDashDC {
@@ -27,7 +27,7 @@ export default class BeerDashDC {
 
                   // normalize/parse data so dc can correctly sort & bin them
                   // I like to think of each "d" as a row in a spreadsheet
-                  _.each(beerData, function(d) {
+                  beerData.forEach(d => {
                     d.count = +d.count;
                     // round to nearest 0.25
                     d.rating_score = Math.round(+d.rating_score * 4) / 4;
@@ -48,10 +48,10 @@ export default class BeerDashDC {
 
                   // create dimensions (x-axis values)
                   var yearDim  = ndx.dimension(function(d) {return d.first_had_year;}),
-                      // dc.pluck: short-hand for same kind of anon. function we used for yearDim
-                      monthDim  = ndx.dimension(dc.pluck('first_had_month')),
-                      dayOfWeekDim = ndx.dimension(dc.pluck('first_had_day')),
-                      ratingDim = ndx.dimension(dc.pluck('rating_score')),
+                      // pluck: short-hand for same kind of anon. function we used for yearDim
+                      monthDim  = ndx.dimension(pluck('first_had_month')),
+                      dayOfWeekDim = ndx.dimension(pluck('first_had_day')),
+                      ratingDim = ndx.dimension(pluck('rating_score')),
                       commRatingDim = ndx.dimension(function(d) {return d.beer.rating_score;}),
                       abvDim = ndx.dimension(function(d) {return d.beer.beer_abv;}),
                       ibuDim = ndx.dimension(function(d) {return d.beer.beer_ibu;}),
@@ -68,15 +68,15 @@ export default class BeerDashDC {
                       countPerIBU = ibuDim.group().reduceCount();
 
                   // specify charts
-                  var yearChart   = dc.pieChart('#chart-ring-year'),
-                      monthChart   = dc.pieChart('#chart-ring-month'),
-                      dayChart   = dc.pieChart('#chart-ring-day'),
-                      ratingCountChart  = dc.barChart('#chart-rating-count'),
-                      commRatingCountChart  = dc.barChart('#chart-community-rating-count'),
-                      abvCountChart  = dc.barChart('#chart-abv-count'),
-                      ibuCountChart  = dc.barChart('#chart-ibu-count'),
-                      dataCount = dc.dataCount('#data-count')
-                      dataTable = dc.dataTable('#data-table');
+                  var yearChart   = pieChart('#chart-ring-year'),
+                      monthChart   = pieChart('#chart-ring-month'),
+                      dayChart   = pieChart('#chart-ring-day'),
+                      ratingCountChart  = barChart('#chart-rating-count'),
+                      commRatingCountChart  = barChart('#chart-community-rating-count'),
+                      abvCountChart  = barChart('#chart-abv-count'),
+                      ibuCountChart  = barChart('#chart-ibu-count');
+                    var  myDataCount = dataCount('#data-count');
+                    var  myDataTable = dataTable('#data-table');
 
                   yearChart
                       .width(150)
@@ -170,11 +170,11 @@ export default class BeerDashDC {
                       .xUnits(function (d) { return 5;})
                       .margins({top: 10, right: 20, bottom: 50, left: 50});
 
-                  dataCount
+                  myDataCount
                       .dimension(ndx)
                       .group(all);
 
-                   dataTable
+                   myDataTable
                     .dimension(allDim)
                     .group(function (d) { return 'dc.js insists on putting a row here so I remove it using JS'; })
                     .size(100)
@@ -187,7 +187,7 @@ export default class BeerDashDC {
                       function (d) { return d.beer.beer_abv; },
                       function (d) { return d.beer.beer_ibu; }
                     ])
-                    .sortBy(dc.pluck('rating_score'))
+                    .sortBy(pluck('rating_score'))
                     .order(d3.descending)
                     .on('renderlet', function (table) {
                       // each time table is rendered remove nasty extra row dc.js insists on adding
@@ -208,27 +208,27 @@ export default class BeerDashDC {
 
                   // register handlers
                   d3.selectAll('a#all').on('click', function () {
-                    dc.filterAll();
-                    dc.renderAll();
+                    filterAll();
+                    renderAll();
                   });
 
                   d3.selectAll('a#year').on('click', function () {
                     yearChart.filterAll();
-                    dc.redrawAll();
+                    redrawAll();
                   });
 
                   d3.selectAll('a#month').on('click', function () {
                     monthChart.filterAll();
-                    dc.redrawAll();
+                    redrawAll();
                   });
 
                   d3.selectAll('a#day').on('click', function () {
                     dayChart.filterAll();
-                    dc.redrawAll();
+                    redrawAll();
                   });
 
                   // showtime!
-                  dc.renderAll();
+                  renderAll();
 
                 });
                 }
