@@ -57,6 +57,7 @@ here is what the regular html was
 
 
         return (
+<<<<<<< HEAD
                 // <div>
                 // <div>
                 // <strong>No Bootstrap</strong>
@@ -64,6 +65,29 @@ here is what the regular html was
                 // </div>
 
                 <div className="container">
+=======
+
+                <div className="container-fluid">
+                  <div className="row">
+                    <div className="col-xs-12 dc-data-count dc-chart" id="data-count">
+                      <h2>Beer History
+                //        <small>
+                //          <span className="filter-count"></span> selected out of <span className="total-count"></span> records |
+                //           <a id="all" href="#">Reset All</a>
+                //          </span>
+                //        </small>
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+                /*<div>
+                <div>
+                <strong>No Bootstrap</strong>
+                </div>
+                </div>*/
+
+                /*<div className="container">
+>>>>>>> 349f80643f673eaf2ec50c11126d3960c8d82c36
                 <div>
                 <strong>Bootstrap</strong>
                 </div>
