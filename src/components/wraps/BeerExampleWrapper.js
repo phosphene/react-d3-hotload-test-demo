@@ -57,32 +57,72 @@ here is what the regular html was
 
 
         return (
-
+                //confirming push
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 dc-data-count dc-chart" id="data-count">
                       <h2>Beer History
-                //        <small>
-                //          <span className="filter-count"></span> selected out of <span className="total-count"></span> records |
-                //           <a id="all" href="#">Reset All</a>
-                //          </span>
-                //        </small>
-                      </h1>
+                        <small>
+                          <span className="filter-count"></span> selected out of <span className="total-count"></span> records |
+                           <a id="all" href="#">Reset All</a>
+                          </span>
+                        </small>
+                      </h2>
+                    </div>
+                  </div>
+                  <div className="row" id="control-row">
+                    <div className="col-xs-2 pie-chart">
+                      <h4>Year <small><a id="year">reset</a></small></h4>
+                      <div className="dc-chart" id="chart-ring-year"></div>
+                    </div>
+                    <div className="col-xs-2 pie-chart">
+                      <h4>Month <small><a id="month" href="#">reset</a></small></h4>
+                      <div className="dc-chart" id="chart-ring-month"></div>
+                    </div>
+                    <div className="col-xs-2 pie-chart">
+                      <h4>Day <small><a id="day">reset</a></small></h4>
+                      <div id="chart-ring-day" className="dc-chart"></div>
+                    </div>
+                    <div className="col-xs-6">
+                      <h4>Breweries</h4>
+                      <div id="map"></div>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-xs-6 col-md-3">
+                      <div className="dc-chart" id="chart-rating-count"></div>
+                    </div>
+                    <div className="col-xs-6 col-md-3">
+                      <div className="dc-chart" id="chart-community-rating-count"></div>
+                    </div>
+                    <div className="col-xs-6 col-md-3">
+                      <div className="dc-chart" id="chart-abv-count"></div>
+                    </div>
+                    <div className="col-xs-6 col-md-3">
+                      <div className="dc-chart" id="chart-ibu-count"></div>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-xs-12">
+                      <table className="table table-bordered table-striped" id="data-table">
+                        <thead>
+                          <tr className="header">
+                            <th>Brewery</th>
+                            <th>Beer</th>
+                            <th>Style</th>
+                            <th>My Rating</th>
+                            <th>Community Rating</th>
+                            <th>ABV %</th>
+                            <th>IBU</th>
+                          </tr>
+                        </thead>
+                      </table>
                     </div>
                   </div>
                 </div>
-                /*<div>
-                <div>
-                <strong>No Bootstrap</strong>
-                </div>
-                </div>*/
 
-                /*<div className="container">
-                <div>
-                <strong>Bootstrap</strong>
-                </div>
-                </div>*/
-        );
+
+                        );
 
     }
 
