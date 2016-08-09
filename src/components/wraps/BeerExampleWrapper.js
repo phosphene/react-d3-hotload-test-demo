@@ -62,11 +62,7 @@ here is what the regular html was
                   <div className="row">
                     <div className="col-xs-12 dc-data-count dc-chart" id="data-count">
                       <h2>Beer History
-                        <small>
-                          <span className="filter-count"></span> selected out of <span className="total-count"></span> records |
                            <a id="all" href="#">Reset All</a>
-                          </span>
-                        </small>
                       </h2>
                     </div>
                   </div>
