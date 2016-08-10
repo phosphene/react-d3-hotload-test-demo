@@ -8,8 +8,17 @@ export default class NasDashDC {
     constructor(el, props = {}) {
         console.log(props)
         //we initiate charts in constructor
+        this.gainOrLossChart = dc.pieChart('#gain-loss-chart');
+        this.fluctuationChart = dc.barChart('#fluctuation-chart');
+        this.quarterChart = dc.pieChart('#quarter-chart');
+        this.dayOfWeekChart = dc.rowChart('#day-of-week-chart');
+        this.moveChart = dc.lineChart('#monthly-move-chart');
+        this.volumeChart = dc.barChart('#monthly-volume-chart');
+        this.yearlyBubbleChart = dc.bubbleChart('#yearly-bubble-chart');
+        this.nasdaqCount = dc.dataCount('.dc-data-count');
+        this.nasdaqTable = dc.dataTable('.dc-data-table');
 
-        this.numberFormat = d3.format(".2f");
+
 
     }
 
@@ -17,56 +26,16 @@ export default class NasDashDC {
     //and we call render here. this is not a react render. we could call it something else
     render() {
 
-        //# dc.js Getting Started and How-To Guide
-        'use strict';
 
-        /* jshint globalstrict: true */
-        /* global dc,d3,crossfilter,colorbrewer */
-
-        // ### Create Chart Objects
-
-        // Create chart objects associated with the container elements identified by the css selector.
-        // Note: It is often a good idea to have these objects accessible at the global scope so that they can be modified or
-        // filtered by other page controls.
-        var gainOrLossChart = dc.pieChart('#gain-loss-chart');
-        var fluctuationChart = dc.barChart('#fluctuation-chart');
-        var quarterChart = dc.pieChart('#quarter-chart');
-        var dayOfWeekChart = dc.rowChart('#day-of-week-chart');
-        var moveChart = dc.lineChart('#monthly-move-chart');
-        var volumeChart = dc.barChart('#monthly-volume-chart');
-        var yearlyBubbleChart = dc.bubbleChart('#yearly-bubble-chart');
-        var nasdaqCount = dc.dataCount('.dc-data-count');
-        var nasdaqTable = dc.dataTable('.dc-data-table');
-
-        // ### Anchor Div for Charts
-        /*
-        // A div anchor that can be identified by id
-        <div id='your-chart'></div>
-        // Title or anything you want to add above the chart
-        <div id='chart'><span>Days by Gain or Loss</span></div>
-        // ##### .turnOnControls()
-
-        // If a link with css class `reset` is present then the chart
-        // will automatically hide/show it based on whether there is a filter
-        // set on the chart (e.g. slice selection for pie chart and brush
-        // selection for bar chart). Enable this with `chart.turnOnControls(true)`
-
-        // dc.js >=2.1 uses `visibility: hidden` to hide/show controls without
-        // disrupting the layout. To return the old `display: none` behavior,
-        // set `chart.controlsUseVisibility(false)` and use that style instead.
-        <div id='chart'>
-        <a class='reset'
-        href='javascript:myChart.filterAll();dc.redrawAll();'
-        style='visibility: hidden;'>reset</a>
-        </div>
-        // dc.js will also automatically inject the current filter value into
-        // any html element with its css class set to `filter`
-        <div id='chart'>
-        <span class='reset' style='visibility: hidden;'>
-        Current filter: <span class='filter'></span>
-        </span>
-        </div>
-        */
+        let gainOrLossChart = this.gainOrLossChart
+        let fluctuationChart = this.fluctuationChart
+        let quarterChart = this.quarterChart
+        let dayOfWeekChart =  this.dayOfWeekChart
+        let moveChart = this.moveChart
+        let volumeChart = this.volumeChart
+        let yearlyBubbleChart = this.yearlyBubbleChart
+        let nasdaqCount = this.nasdaqCount
+        let nasdaqTable = this.nasdaqTable
 
         //### Load your data
 
@@ -693,5 +662,47 @@ export default class NasDashDC {
         });
 
     }
+
+
+resetChart(chartName) {
+
+    switch (chartName) {
+    case "yearly-bubble-chart":
+        this.yearlyBubbleChart.filterAll();
+        break;
+    case "gain-loss-chart":
+        this.gainOrLossChart.filterAll();
+        break;
+
+    case "quarter-chart":
+        this.quarterChart.filterAll();
+        //Statements executed when the result of expression matches valueN
+        break;
+    case "day-of-week-chart":
+         this.dayOfWeekChart.filterAll();
+        //Statements executed when the result of expression matches valueN
+        break;
+
+    case "fluctuation-chart":
+        this.fluctuationChart.filterAll();
+        break;
+
+    case "monthly-move-chart":
+        this.moveChart.filterAll();
+        this.volumeChart.filterAll();
+        break;
+
+    case "all":
+        dc.filterAll();
+        dc.renderAll();
+        break;
+   default:
+        //Statements executed when none of the values match the value of the expression
+        break;
+    }
+
+     dc.redrawAll();
+}
+
 
 }

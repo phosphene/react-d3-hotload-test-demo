@@ -11,13 +11,13 @@ class NasDashWrapper extends React.Component {
     }
 
 
-
     render() {
         const aStyle = { display: 'none'};
         const pStyle = { marginRight: "15px"};
 
-        const clickReset = x => {
-            //this.dashboard.resetChart(x);
+        const clickReset = (x) => {
+           console.log(x);
+           this.dashboard.resetChart(x);
         }
 
 
@@ -28,7 +28,7 @@ class NasDashWrapper extends React.Component {
             <div className="row">
             <div id="yearly-bubble-chart" className="dc-chart">
             <strong>Yearly Performance</strong> (radius: fluctuation/index ratio, color: gain/loss)
-            <a className="reset" onClick={clickReset("yearly-bubble-chart")}
+            <a className="reset" onClick={()=>clickReset("yearly-bubble-chart")}
             style={aStyle}>reset</a>
 
             <div className="clearfix"></div>
@@ -39,9 +39,8 @@ class NasDashWrapper extends React.Component {
             <div id="gain-loss-chart">
             <strong>Days by Gain/Loss</strong>
 
-            <a className="reset" onClick={clickReset("gain-loss-chart")}
+            <a className="reset" onClick={()=>clickReset("gain-loss-chart")}
             style={aStyle}>reset</a>
-
 
             <div className="clearfix"></div>
             </div>
@@ -50,7 +49,7 @@ class NasDashWrapper extends React.Component {
             <div id="quarter-chart">
             <strong>Quarters</strong>
 
-            <a className="reset" onClick={clickReset("quarter-chart")}
+            <a className="reset" onClick={()=>clickReset("quarter-chart")}
             style={aStyle}>reset</a>
 
             <div className="clearfix"></div>
@@ -59,7 +58,7 @@ class NasDashWrapper extends React.Component {
             <div id="day-of-week-chart">
             <strong>Day of Week</strong>
 
-            <a className="reset" onClick={clickReset("day-of-week-chart")}
+            <a className="reset" onClick={()=>clickReset("day-of-week-chart")}
             style={aStyle}>reset</a>
 
             <div className="clearfix"></div>
@@ -69,10 +68,8 @@ class NasDashWrapper extends React.Component {
             <strong>Days by Fluctuation(%)</strong>
             <span className="reset" style={aStyle}>range: <span className="filter"></span></span>
 
-            <a className="reset" onClick={clickReset("fluctuation-chart")}
+            <a className="reset" onClick={()=>clickReset("fluctuation-chart")}
             style={aStyle}>reset</a>
-
-
 
             <div className="clearfix"></div>
             </div>
@@ -82,9 +79,8 @@ class NasDashWrapper extends React.Component {
             <div id="monthly-move-chart">
             <strong>Monthly Index Abs Move & Volume/500,000 Chart</strong>
             <span className="reset" style={aStyle}>range: <span className="filter"></span></span>
-            <a className="reset" onClick={clickReset("fluctuation-chart")}
+            <a className="reset" onClick={()=>clickReset("monthly-move-chart")}
             style={aStyle}>reset</a>
-
 
 
             <div className="clearfix"></div>
@@ -102,9 +98,8 @@ class NasDashWrapper extends React.Component {
             <div className="dc-data-count">
 
 
-
             <span className="filter-count"></span> selected out of <span className="total-count"></span> records | <a
-            href="#" onClick={clickReset("all")}>Reset All</a>
+            href="#" onClick={()=>clickReset("all")}>Reset All</a>
             </div>
             </div>
             <table className="table table-hover dc-data-table">
@@ -113,13 +108,10 @@ class NasDashWrapper extends React.Component {
 
             <div className="clearfix"></div>
             </div>
-
-
-
-
         );
 
     }
+
 
     componentDidMount() {
         this.dashboard = new NasDashDC();
