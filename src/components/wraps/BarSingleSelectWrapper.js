@@ -22,11 +22,11 @@ class BarSingleSelectWrapper extends React.Component {
         }
 
         return (
-                <div id="chart">
-                <div>
-                <a onClick={clickReset}> reset</a>
-                </div>
-                </div>
+          <div id="chart">
+            <div>
+              <a onClick={clickReset}> reset</a>
+            </div>
+          </div>
         );
 
     }
