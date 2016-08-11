@@ -12,7 +12,7 @@ class NasDashWrapper extends React.Component {
 
 
     render() {
-        const aStyle = { display: 'none'};
+        const aStyle = { display: 'none', cursor: 'pointer'};
         const pStyle = { marginRight: "15px"};
 
         const clickReset = (x) => {
@@ -28,8 +28,7 @@ class NasDashWrapper extends React.Component {
             <div className="row">
             <div id="yearly-bubble-chart" className="dc-chart">
             <strong>Yearly Performance</strong> (radius: fluctuation/index ratio, color: gain/loss)
-            <a className="reset" onClick={()=>clickReset("yearly-bubble-chart")}
-            style={aStyle}>reset</a>
+            <a className="reset" onClick={()=>clickReset("yearly-bubble-chart")} style={aStyle}>reset</a>
 
             <div className="clearfix"></div>
             </div>
@@ -68,8 +67,7 @@ class NasDashWrapper extends React.Component {
             <strong>Days by Fluctuation(%)</strong>
             <span className="reset" style={aStyle}>range: <span className="filter"></span></span>
 
-            <a className="reset" onClick={()=>clickReset("fluctuation-chart")}
-            style={aStyle}>reset</a>
+            <a className="reset" onClick={()=>clickReset("fluctuation-chart")} style={aStyle}>reset</a>
 
             <div className="clearfix"></div>
             </div>
