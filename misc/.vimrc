@@ -8,8 +8,7 @@ if has('gui_running')
 end
 
 source ~/.vim/before.vim   " local BEFORE configs
-Plugin 'pangloss/vim-javascript' 
-Plugin 'mxw/vim-jsx'
+
 " after.vim is loaded from ./after/plugin/after.vim
 " which should place it AFTER all the other plugins in the loading order
 " bindings.vim and local.vim are loaded from after.vim
