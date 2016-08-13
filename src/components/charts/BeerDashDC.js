@@ -192,18 +192,6 @@ export default class BeerDashDC {
                     .on('renderlet', function (table) {
                       // each time table is rendered remove nasty extra row dc.js insists on adding
                       table.select('tr.dc-table-group').remove();
-
-                      // update map with breweries to match filtered data
-                      breweryMarkers.clearLayers();
-                      _.each(allDim.top(Infinity), function (d) {
-                        var loc = d.brewery.location;
-                        var name = d.brewery.brewery_name;
-                        var marker = L.marker([loc.lat, loc.lng]);
-                        marker.bindPopup("<p>" + name + " " + loc.brewery_city + " " + loc.brewery_state + "</p>");
-                        breweryMarkers.addLayer(marker);
-                      });
-                      map.addLayer(breweryMarkers);
-                      map.fitBounds(breweryMarkers.getBounds());
                     });
 
                   // register handlers

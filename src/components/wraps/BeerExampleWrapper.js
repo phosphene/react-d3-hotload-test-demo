@@ -81,10 +81,6 @@ here is what the regular html was
                       <h4>Day <small><a id="day">reset</a></small></h4>
                       <div id="chart-ring-day" className="dc-chart"></div>
                     </div>
-                    <div className="col-xs-6">
-                      <h4>Breweries</h4>
-                      <div id="map"></div>
-                    </div>
                   </div>
                   <div className="row">
                     <div className="col-xs-6 col-md-3">
