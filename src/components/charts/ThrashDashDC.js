@@ -31,20 +31,23 @@ export default class BeerDashDC {
 
             //console.log(surfData);
             surfData.forEach(d=>{
-                /*d.sessionDateDt = new Date(d.sessionDate);
-                d.sessionYearDt = d.sessionDateDt.getUTCFullYear();
-                d.sessionMonthDt = d.sessionDateDt.getUTCMonth();
-                console.log(d.sessionDateDt);
-                console.log(d.sessionYearDt);
-                console.log(typeof(d.sessionMonthDt));*/
+              /*d.sessionDateDt = new Date(d.sessionDate);
+                 d.sessionYearDt = d.sessionDateDt.getUTCFullYear();
+                 d.sessionMonthDt = d.sessionDateDt.getUTCMonth();
+                 console.log(d.sessionDateDt);
+                 console.log(d.sessionYearDt);
+                 console.log(typeof(d.sessionMonthDt));*/
 
+                const dateObj  = new Date(d.sessionDate);
                 const fullDateFormat = d3.time.format("%a, %d %b %Y %X %Z");
                 const yearFormat = d3.time.format('%Y');
                 const monthFormat = d3.time.format('%b');
                 const dayOfWeekFormat = d3.time.format('%a');
 
-                d.sessionDateFormatted = fullDateFormat(new Date(d.sessionDate));
-                d.sessionYear = yearFormat(new Date(d.sessionDate));
+                d.sessionDateFormatted = fullDateFormat(dateObj);
+                d.sessionYear = yearFormat(dateObj);
+                 //dont do the below
+                 //dont call format on a string already formatted
                 //d.sessionYear = yearFormat(d.sessionDateFormatted);
                 console.log(d.sessionDateFormatted);
                 console.log(d.sessionYear);
@@ -56,5 +59,3 @@ export default class BeerDashDC {
         });
     }
 }
-
-
