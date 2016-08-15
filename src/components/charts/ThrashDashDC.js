@@ -15,6 +15,14 @@ export default class BeerDashDC {
     render() {
         console.log('in render');
         d3.json('src/stores/thrashtown.json', function (error, data) {
+            var surfData = data;
+            //console.log(surfData);
+            surfData.forEach(d=>{
+                //console.log(d.hollowness);
+            });
+
+            var ttx = crossfilter(surfData);
+            console.log(ttx);
         });
     }
 }
