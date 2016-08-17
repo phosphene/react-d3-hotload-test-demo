@@ -59,7 +59,7 @@ here is what the regular html was
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 dc-data-count dc-chart" id="data-count">
-                      <h2>Beer History
+                      <h2>Session History
                         <small>
 
                            <a id="all" href="#">Reset All</a>
