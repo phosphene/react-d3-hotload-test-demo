@@ -17,7 +17,6 @@ export default class BeerDashDC {
         d3.json('src/stores/thrashtown.json', function (error, data) {
             var surfData = data;
 
-            //var date = d3.time.format("%Y-%m-%d").parse("2016-11-28T00:51:00.000z");
             const fullDateFormat = d3.time.format("%a, %d %b %Y %X %Z");
             const yearFormat = d3.time.format('%Y');
             const monthFormat = d3.time.format('%b');
@@ -32,8 +31,8 @@ export default class BeerDashDC {
                 let dateObj  = new Date(d.sessionDate);
                 d.sessionDateFormatted = fullDateFormat(dateObj);
                 d.sessionYear = +yearFormat(dateObj);
-                console.log(d.sessionYear);
                 d.sessionMonth = monthFormat(dateObj);
+                console.log(typeof(d.sessionMonth));
                 d.sessionDay = dayFormat(dateObj);
 
             });
@@ -43,13 +42,16 @@ export default class BeerDashDC {
             // create dimensions (x-axis values)
             //var yearDim  = ttx.dimension(function(d) {return d.sessionYear;}),
             var yearDim  = ttx.dimension(pluck("sessionYear"));
+            var monthDim  = ttx.dimension(pluck("sessionMonth"));
+            //console.log(yearDim.top(2));
 
             // create groups (y-axis values)
             var all = ttx.groupAll();
             var countPerYear = yearDim.group().reduceCount();
+            var countPerMonth = monthDim.group().reduceCount();
 
             const yearChart = pieChart('#chart-ring-year');
-                //monthChart = pieChart('#chart-ring-month'),
+            const monthChart = pieChart('#chart-ring-month');
                 //dayChart = pieChart('#chart-ring-day');
 
             yearChart
@@ -59,12 +61,12 @@ export default class BeerDashDC {
               .group(countPerYear)
               .innerRadius(20);
 
-            /*monthchart
+            monthChart
               .width(150)
               .height(150)
-              .dimension(monthdim)
-              .group(countpermonth)
-              .innerradius(20)
+              .dimension(monthDim)
+              .group(countPerMonth)
+              .innerRadius(20)
               .ordering(function (d) {
                 var order = {
                   'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4,
@@ -74,7 +76,7 @@ export default class BeerDashDC {
                 return order[d.key];
               });
 
-            daychart
+            /*daychart
               .width(150)
               .height(150)
               .dimension(dayofweekdim)
