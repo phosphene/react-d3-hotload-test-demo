@@ -43,16 +43,17 @@ export default class ThrashDashDC {
             //var yearDim  = ttx.dimension(function(d) {return d.sessionYear;}),
             var yearDim  = ttx.dimension(pluck("sessionYear"));
             var monthDim  = ttx.dimension(pluck("sessionMonth"));
-            //console.log(yearDim.top(2));
+            var dayDim  = ttx.dimension(pluck("sessionDay"));
 
             // create groups (y-axis values)
             var all = ttx.groupAll();
             var countPerYear = yearDim.group().reduceCount();
             var countPerMonth = monthDim.group().reduceCount();
+            var countPerDay = dayDim.group().reduceCount();
 
             const yearChart = pieChart('#chart-ring-year');
             const monthChart = pieChart('#chart-ring-month');
-                //dayChart = pieChart('#chart-ring-day');
+            const dayChart = pieChart('#chart-ring-day');
 
             yearChart
               .width(150)
@@ -76,12 +77,12 @@ export default class ThrashDashDC {
                 return order[d.key];
               });
 
-            /*daychart
+            dayChart
               .width(150)
               .height(150)
-              .dimension(dayofweekdim)
-              .group(countperday)
-              .innerradius(20)
+              .dimension(dayDim)
+              .group(countPerDay)
+              .innerRadius(20)
               .ordering(function (d) {
                 var order = {
                   'mon': 0, 'tue': 1, 'wed': 2, 'thu': 3,
@@ -89,7 +90,7 @@ export default class ThrashDashDC {
                 }
                 return order[d.key];
               }
-             );*/
+             );
 
             //draw the viz!
             renderAll();
