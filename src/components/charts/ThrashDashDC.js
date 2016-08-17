@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 import {crossfilter, units, geoChoroplethChart, bubbleChart, renderAll, redrawAll, filterAll, pieChart, barChart, dataCount, dataTable, pluck} from 'dc';
 
 //we can call export at the top of the class declaration
-export default class BeerDashDC {
+export default class ThrashDashDC {
 
     constructor(el, props = {}) {
         //we initiate charts in constructor
