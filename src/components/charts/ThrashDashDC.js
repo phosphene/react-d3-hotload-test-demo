@@ -32,7 +32,7 @@ export default class ThrashDashDC {
                 d.sessionDateFormatted = fullDateFormat(dateObj);
                 d.sessionYear = +yearFormat(dateObj);
                 d.sessionMonth = monthFormat(dateObj);
-                console.log(typeof(d.sessionMonth));
+                console.log(typeof(d.funFactor));
                 d.sessionDay = dayFormat(dateObj);
 
             });
@@ -41,19 +41,28 @@ export default class ThrashDashDC {
 
             // create dimensions (x-axis values)
             //var yearDim  = ttx.dimension(function(d) {return d.sessionYear;}),
+            var funFactorDim  = ttx.dimension(pluck("funFactor"));
             var yearDim  = ttx.dimension(pluck("sessionYear"));
             var monthDim  = ttx.dimension(pluck("sessionMonth"));
             var dayDim  = ttx.dimension(pluck("sessionDay"));
 
             // create groups (y-axis values)
             var all = ttx.groupAll();
+            var countPerFunFactor = funFactorDim.group().reduceCount();
             var countPerYear = yearDim.group().reduceCount();
             var countPerMonth = monthDim.group().reduceCount();
             var countPerDay = dayDim.group().reduceCount();
 
+            const funFactorChart = barChart('#chart-bar-fun-factor');
             const yearChart = pieChart('#chart-ring-year');
             const monthChart = pieChart('#chart-ring-month');
             const dayChart = pieChart('#chart-ring-day');
+
+            funFactorChart
+              .width(300)
+              .height(180)
+              .dimension(funFactorDim)
+              .group(countPerFunFactor)
 
             yearChart
               .width(150)
