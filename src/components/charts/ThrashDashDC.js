@@ -63,6 +63,13 @@ export default class ThrashDashDC {
               .height(180)
               .dimension(funFactorDim)
               .group(countPerFunFactor)
+              .x(d3.scale.linear().domain([0,5.2]))
+              .elasticY(true)
+              .centerBar(true)
+              .barPadding(5)
+              .xAxisLabel('My rating')
+              .yAxisLabel('Count')
+            funFactorChart.xAxis().tickValues([0, 1, 2, 3, 4, 5]);
 
             yearChart
               .width(150)
