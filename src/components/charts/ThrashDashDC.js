@@ -67,92 +67,92 @@ export default class ThrashDashDC {
             const dayChart = pieChart('#chart-ring-day');
 
             qualityFactorChart
-              .width(300)
-              .height(180)
-              .dimension(qualityFactorDim)
-              .group(countPerQualityFactor)
-              .x(d3.scale.linear().domain([0,5.2]))
-              .elasticY(true)
-              .centerBar(true)
-              .barPadding(5)
-              .xAxisLabel('Quality Factor')
-              .yAxisLabel('Sessions')
+                .width(300)
+                .height(180)
+                .dimension(qualityFactorDim)
+                .group(countPerQualityFactor)
+                .x(d3.scale.linear().domain([0,5.2]))
+                .elasticY(true)
+                .centerBar(true)
+                .barPadding(5)
+                .xAxisLabel('Quality Factor')
+                .yAxisLabel('Sessions')
             qualityFactorChart.xAxis().tickValues([0,1,2,3,4,5]);
 
             hollowFactorChart
-              .width(300)
-              .height(180)
-              .dimension(hollowFactorDim)
-              .group(countPerHollowFactor)
-              .x(d3.scale.linear().domain([0,5.2]))
-              .elasticY(true)
-              .centerBar(true)
-              .barPadding(5)
-              .xAxisLabel('Hollow Factor')
-              .yAxisLabel('Sessions')
+                .width(300)
+                .height(180)
+                .dimension(hollowFactorDim)
+                .group(countPerHollowFactor)
+                .x(d3.scale.linear().domain([0,5.2]))
+                .elasticY(true)
+                .centerBar(true)
+                .barPadding(5)
+                .xAxisLabel('Hollow Factor')
+                .yAxisLabel('Sessions')
             hollowFactorChart.xAxis().tickValues([0,1,2,3,4,5]);
 
             crowdFactorChart
-              .width(300)
-              .height(180)
-              .dimension(crowdFactorDim)
-              .group(countPerCrowdFactor)
-              .x(d3.scale.linear().domain([0,5.2]))
-              .elasticY(true)
-              .centerBar(true)
-              .barPadding(5)
-              .xAxisLabel('Crowd Factor')
-              .yAxisLabel('Sessions')
+                .width(300)
+                .height(180)
+                .dimension(crowdFactorDim)
+                .group(countPerCrowdFactor)
+                .x(d3.scale.linear().domain([0,5.2]))
+                .elasticY(true)
+                .centerBar(true)
+                .barPadding(5)
+                .xAxisLabel('Crowd Factor')
+                .yAxisLabel('Sessions')
             crowdFactorChart.xAxis().tickValues([0,1,2,3,4,5]);
 
             funFactorChart
-              .width(300)
-              .height(180)
-              .dimension(funFactorDim)
-              .group(countPerFunFactor)
-              .x(d3.scale.linear().domain([0,5.2]))
-              .elasticY(true)
-              .centerBar(true)
-              .barPadding(5)
-              .xAxisLabel('Fun Factor')
-              .yAxisLabel('Sessions')
+                .width(300)
+                .height(180)
+                .dimension(funFactorDim)
+                .group(countPerFunFactor)
+                .x(d3.scale.linear().domain([0,5.2]))
+                .elasticY(true)
+                .centerBar(true)
+                .barPadding(5)
+                .xAxisLabel('Fun Factor')
+                .yAxisLabel('Sessions')
             funFactorChart.xAxis().tickValues([0, 1, 2, 3, 4, 5]);
 
             yearChart
-              .width(150)
-              .height(150)
-              .dimension(yearDim)
-              .group(countPerYear)
-              .innerRadius(20);
+                .width(150)
+                .height(150)
+                .dimension(yearDim)
+                .group(countPerYear)
+                .innerRadius(20);
 
             monthChart
-              .width(150)
-              .height(150)
-              .dimension(monthDim)
-              .group(countPerMonth)
-              .innerRadius(20)
-              .ordering(function (d) {
+                .width(150)
+                .height(150)
+                .dimension(monthDim)
+                .group(countPerMonth)
+                .innerRadius(20)
+                .ordering(function (d) {
                 var order = {
                   'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4,
                   'may': 5, 'jun': 6, 'jul': 7, 'aug': 8,
                   'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12
                 };
                 return order[d.key];
-              });
+                });
 
             dayChart
-              .width(150)
-              .height(150)
-              .dimension(dayDim)
-              .group(countPerDay)
-              .innerRadius(20)
-              .ordering(function (d) {
+                .width(150)
+                .height(150)
+                .dimension(dayDim)
+                .group(countPerDay)
+                .innerRadius(20)
+                .ordering(function (d) {
                 var order = {
                   'mon': 0, 'tue': 1, 'wed': 2, 'thu': 3,
                   'fri': 4, 'sat': 5, 'sun': 6
                 }
                 return order[d.key];
-              });
+                });
 
             //draw the viz!
             renderAll();
