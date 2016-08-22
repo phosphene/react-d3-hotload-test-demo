@@ -154,6 +154,27 @@ export default class ThrashDashDC {
                 return order[d.key];
                 });
 
+            //register handlers
+            d3.selectAll('a#all').on('click', function() {
+                filterAll();
+                renderAll();
+            });
+
+            d3.selectAll('a#year').on('click', function () {
+                yearChart.filterAll();
+                redrawAll();
+            });
+
+            d3.selectAll('a#month').on('click', function () {
+                monthChart.filterAll();
+                redrawAll();
+            });
+
+            d3.selectAll('a#day').on('click', function () {
+                dayChart.filterAll();
+                redrawAll();
+            });
+
             //draw the viz!
             renderAll();
 
