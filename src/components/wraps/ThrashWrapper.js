@@ -90,27 +90,10 @@ here is what the regular html was
                       <div className="dc-chart" id="chart-bar-crowd-factor"></div>
                     </div>
                     <div className="col-xs-6 col-md-3">
-                      <div className="dc-chart" id="chart-abv-count"></div>
+                      <div className="dc-chart" id="chart-bar-hollow-factor"></div>
                     </div>
                     <div className="col-xs-6 col-md-3">
-                      <div className="dc-chart" id="chart-ibu-count"></div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-xs-12">
-                      <table className="table table-bordered table-striped" id="data-table">
-                        <thead>
-                          <tr className="header">
-                            <th>Brewery</th>
-                            <th>Beer</th>
-                            <th>Style</th>
-                            <th>My Rating</th>
-                            <th>Community Rating</th>
-                            <th>ABV %</th>
-                            <th>IBU</th>
-                          </tr>
-                        </thead>
-                      </table>
+                      <div className="dc-chart" id="chart-bar-quality-factor"></div>
                     </div>
                   </div>
                 </div>
