@@ -32,7 +32,7 @@ export default class ThrashDashDC {
                 d.sessionDateFormatted = fullDateFormat(dateObj);
                 d.sessionYear = +yearFormat(dateObj);
                 d.sessionMonth = monthFormat(dateObj);
-                console.log(typeof(d.hollowness));
+                console.log(typeof(d.waveQuality));
                 d.sessionDay = dayFormat(dateObj);
 
             });
@@ -40,6 +40,7 @@ export default class ThrashDashDC {
             const ttx = crossfilter(surfData);
 
             // create dimensions (x-axis values)
+            var qualityFactorDim  = ttx.dimension(pluck("waveQuality"));
             var hollowFactorDim  = ttx.dimension(pluck("hollowness"));
             var crowdFactorDim  = ttx.dimension(pluck("crowdedness"));
             var funFactorDim  = ttx.dimension(pluck("funFactor"));
@@ -49,6 +50,7 @@ export default class ThrashDashDC {
 
             // create groups (y-axis values)
             var all = ttx.groupAll();
+            var countPerQualityFactor = qualityFactorDim.group().reduceCount();
             var countPerHollowFactor = hollowFactorDim.group().reduceCount();
             var countPerCrowdFactor = crowdFactorDim.group().reduceCount();
             var countPerFunFactor = funFactorDim.group().reduceCount();
@@ -56,12 +58,26 @@ export default class ThrashDashDC {
             var countPerMonth = monthDim.group().reduceCount();
             var countPerDay = dayDim.group().reduceCount();
 
+            const qualityFactorChart = barChart('#chart-bar-quality-factor');
             const hollowFactorChart = barChart('#chart-bar-hollow-factor');
             const crowdFactorChart = barChart('#chart-bar-crowd-factor');
             const funFactorChart = barChart('#chart-bar-fun-factor');
             const yearChart = pieChart('#chart-ring-year');
             const monthChart = pieChart('#chart-ring-month');
             const dayChart = pieChart('#chart-ring-day');
+
+            qualityFactorChart
+              .width(300)
+              .height(180)
+              .dimension(qualityFactorDim)
+              .group(countPerQualityFactor)
+              .x(d3.scale.linear().domain([0,5.2]))
+              .elasticY(true)
+              .centerBar(true)
+              .barPadding(5)
+              .xAxisLabel('Quality Factor')
+              .yAxisLabel('Sessions')
+            qualityFactorChart.xAxis().tickValues([0,1,2,3,4,5]);
 
             hollowFactorChart
               .width(300)
