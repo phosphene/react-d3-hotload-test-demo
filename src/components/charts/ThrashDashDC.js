@@ -56,77 +56,90 @@ export default class ThrashDashDC {
             var countPerMonth = monthDim.group().reduceCount();
             var countPerDay = dayDim.group().reduceCount();
 
-            //const hollowFactorChart = barChart('#chart-bar-hollow-factor');
+            const hollowFactorChart = barChart('#chart-bar-hollow-factor');
             const crowdFactorChart = barChart('#chart-bar-crowd-factor');
             const funFactorChart = barChart('#chart-bar-fun-factor');
             const yearChart = pieChart('#chart-ring-year');
             const monthChart = pieChart('#chart-ring-month');
             const dayChart = pieChart('#chart-ring-day');
 
-			crowdFactorChart
-			  .width(300)
-			  .height(180)
-			  .dimension(crowdFactorDim)
-			  .group(countPerCrowdFactor)
-			  .x(d3.scale.linear().domain([0,5.2]))
-			  .elasticY(true)
-			  .centerBar(true)
-			  .barPadding(5)
-			  .xAxisLabel('Crowd Factor')
-			  .yAxisLabel('Sessions')
-			crowdFactorChart.xAxis().tickValues([0,1,2,3,4,5]);
+            hollowFactorChart
+              .width(300)
+              .height(180)
+              .dimension(hollowFactorDim)
+              .group(countPerHollowFactor)
+              .x(d3.scale.linear().domain([0,5.2]))
+              .elasticY(true)
+              .centerBar(true)
+              .barPadding(5)
+              .xAxisLabel('Hollow Factor')
+              .yAxisLabel('Sessions')
+            hollowFactorChart.xAxis().tickValues([0,1,2,3,4,5]);
 
-			funFactorChart
-			  .width(300)
-			  .height(180)
-			  .dimension(funFactorDim)
-			  .group(countPerFunFactor)
-			  .x(d3.scale.linear().domain([0,5.2]))
-			  .elasticY(true)
-			  .centerBar(true)
-			  .barPadding(5)
-			  .xAxisLabel('Fun Factor')
-			  .yAxisLabel('Sessions')
-			funFactorChart.xAxis().tickValues([0, 1, 2, 3, 4, 5]);
+            crowdFactorChart
+              .width(300)
+              .height(180)
+              .dimension(crowdFactorDim)
+              .group(countPerCrowdFactor)
+              .x(d3.scale.linear().domain([0,5.2]))
+              .elasticY(true)
+              .centerBar(true)
+              .barPadding(5)
+              .xAxisLabel('Crowd Factor')
+              .yAxisLabel('Sessions')
+            crowdFactorChart.xAxis().tickValues([0,1,2,3,4,5]);
 
-			yearChart
-			  .width(150)
-			  .height(150)
-			  .dimension(yearDim)
-			  .group(countPerYear)
-			  .innerRadius(20);
+            funFactorChart
+              .width(300)
+              .height(180)
+              .dimension(funFactorDim)
+              .group(countPerFunFactor)
+              .x(d3.scale.linear().domain([0,5.2]))
+              .elasticY(true)
+              .centerBar(true)
+              .barPadding(5)
+              .xAxisLabel('Fun Factor')
+              .yAxisLabel('Sessions')
+            funFactorChart.xAxis().tickValues([0, 1, 2, 3, 4, 5]);
 
-			monthChart
-			  .width(150)
-			  .height(150)
-			  .dimension(monthDim)
-			  .group(countPerMonth)
-			  .innerRadius(20)
-			  .ordering(function (d) {
-				var order = {
-				  'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4,
-				  'may': 5, 'jun': 6, 'jul': 7, 'aug': 8,
-				  'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12
-				};
-				return order[d.key];
-			  });
+            yearChart
+              .width(150)
+              .height(150)
+              .dimension(yearDim)
+              .group(countPerYear)
+              .innerRadius(20);
 
-			dayChart
-			  .width(150)
-			  .height(150)
-			  .dimension(dayDim)
-			  .group(countPerDay)
-			  .innerRadius(20)
-			  .ordering(function (d) {
-				var order = {
-				  'mon': 0, 'tue': 1, 'wed': 2, 'thu': 3,
-				  'fri': 4, 'sat': 5, 'sun': 6
-				}
-				return order[d.key];
-			  });
+            monthChart
+              .width(150)
+              .height(150)
+              .dimension(monthDim)
+              .group(countPerMonth)
+              .innerRadius(20)
+              .ordering(function (d) {
+                var order = {
+                  'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4,
+                  'may': 5, 'jun': 6, 'jul': 7, 'aug': 8,
+                  'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12
+                };
+                return order[d.key];
+              });
 
-			//draw the viz!
-			renderAll();
+            dayChart
+              .width(150)
+              .height(150)
+              .dimension(dayDim)
+              .group(countPerDay)
+              .innerRadius(20)
+              .ordering(function (d) {
+                var order = {
+                  'mon': 0, 'tue': 1, 'wed': 2, 'thu': 3,
+                  'fri': 4, 'sat': 5, 'sun': 6
+                }
+                return order[d.key];
+              });
+
+            //draw the viz!
+            renderAll();
 
         });
     }
