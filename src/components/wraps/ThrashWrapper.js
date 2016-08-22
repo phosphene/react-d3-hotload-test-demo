@@ -84,10 +84,10 @@ here is what the regular html was
                   </div>
                   <div className="row">
                     <div className="col-xs-6 col-md-3">
-                      <div className="dc-chart" id="chart-rating-count"></div>
+                      <div className="dc-chart" id="chart-bar-fun-factor"></div>
                     </div>
                     <div className="col-xs-6 col-md-3">
-                      <div className="dc-chart" id="chart-community-rating-count"></div>
+                      <div className="dc-chart" id="chart-bar-crowd-factor"></div>
                     </div>
                     <div className="col-xs-6 col-md-3">
                       <div className="dc-chart" id="chart-abv-count"></div>

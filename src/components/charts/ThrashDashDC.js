@@ -7,7 +7,7 @@ export default class ThrashDashDC {
     constructor(el, props = {}) {
         //we initiate charts in constructor
 
-        console.log('in construcor');
+        console.log('the construcor');
         this.numberFormat = d3.format(".2f");
 
     }
@@ -41,6 +41,7 @@ export default class ThrashDashDC {
 
             // create dimensions (x-axis values)
             //var yearDim  = ttx.dimension(function(d) {return d.sessionYear;}),
+            var crowdFactorDim  = ttx.dimension(pluck("crowdedness"));
             var funFactorDim  = ttx.dimension(pluck("funFactor"));
             var yearDim  = ttx.dimension(pluck("sessionYear"));
             var monthDim  = ttx.dimension(pluck("sessionMonth"));
@@ -48,17 +49,32 @@ export default class ThrashDashDC {
 
             // create groups (y-axis values)
             var all = ttx.groupAll();
+            var countPerCrowdFactor = crowdFactorDim.group().reduceCount();
             var countPerFunFactor = funFactorDim.group().reduceCount();
             var countPerYear = yearDim.group().reduceCount();
             var countPerMonth = monthDim.group().reduceCount();
             var countPerDay = dayDim.group().reduceCount();
 
+            const crowdFactorChart = barChart('#chart-bar-crowd-factor');
             const funFactorChart = barChart('#chart-bar-fun-factor');
             const yearChart = pieChart('#chart-ring-year');
             const monthChart = pieChart('#chart-ring-month');
             const dayChart = pieChart('#chart-ring-day');
 
-            funFactorChart
+             crowdFactorChart
+              .width(300)
+              .height(180)
+              .dimension(crowdFactorDim)
+              .group(countPerCrowdFactor)
+              .x(d3.scale.linear().domain([0,5.2]))
+			  .elasticY(true)
+			  .centerBar(true)
+			  .barPadding(5)
+			  .xAxisLabel('Crowd Factor')
+			  .yAxisLabel('Sessions')
+		   crowdFactorChart.xAxis().tickValues([0,1,2,3,4,5]);
+
+           funFactorChart
               .width(300)
               .height(180)
               .dimension(funFactorDim)
@@ -67,8 +83,8 @@ export default class ThrashDashDC {
               .elasticY(true)
               .centerBar(true)
               .barPadding(5)
-              .xAxisLabel('My rating')
-              .yAxisLabel('Count')
+              .xAxisLabel('Fun Factor')
+              .yAxisLabel('Sessions')
             funFactorChart.xAxis().tickValues([0, 1, 2, 3, 4, 5]);
 
             yearChart
