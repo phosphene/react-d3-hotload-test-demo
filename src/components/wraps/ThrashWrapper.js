@@ -20,29 +20,30 @@ class ThrashWrapper extends React.Component {
         }
 
         return (
-
             <div className="container-fluid">
-              <div className="row">
-                <div className="col-xs-2">
-                    <div id="chart-ring-year">
-                        <strong>Year</strong>
-                        <a className="reset" onClick={()=>clickReset("chart-ring-year")} style={cursorStyle}> reset</a>
-                        <div className="clearfix"></div>
+                <div className="row">
+                    <div className="col-xs-2">
+                        <div id="chart-ring-year">
+                            <strong>Year</strong>
+                            <a className="reset" onClick={()=>clickReset("chart-ring-year")} style={cursorStyle}> reset</a>
+                            <div className="clearfix"></div>
+                        </div>
+                    </div>
+                    <div className="col-xs-2">
+                        <div id="chart-ring-month">
+                            <strong>Month</strong>
+                            <a className="reset" onClick={()=>clickReset("chart-ring-month")} style={cursorStyle}> reset</a>
+                            <div className="clearfix"></div>
+                        </div>
+                    </div>
+                    <div className="col-xs-2">
+                        <div id="chart-ring-day">
+                            <strong>Month</strong>
+                            <a className="reset" onClick={()=>clickReset("chart-ring-day")} style={cursorStyle}> reset</a>
+                            <div className="clearfix"></div>
+                        </div>
                     </div>
                 </div>
-                {/*<div className="col-xs-2 pie-chart">
-                  <h4>Year <small><a id="year">reset</a></small></h4>
-                  <div className="dc-chart" id="chart-ring-years"></div>
-                </div>*/}
-                <div className="col-xs-2 pie-chart">
-                  <h4>Month <small><a id="month" href="#">reset</a></small></h4>
-                  <div className="dc-chart" id="chart-ring-month"></div>
-                </div>
-                <div className="col-xs-2 pie-chart">
-                  <h4>Day <small><a id="day">reset</a></small></h4>
-                  <div id="chart-ring-day" className="dc-chart"></div>
-                </div>
-              </div>
               <div className="row">
                 <div className="col-xs-6 col-md-3">
                   <div className="dc-chart" id="chart-bar-fun-factor"></div>
