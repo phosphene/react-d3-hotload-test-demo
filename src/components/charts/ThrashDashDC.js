@@ -157,27 +157,6 @@ export default class ThrashDashDC {
                 return order[d.key];
                 });
 
-/*            //register handlers
-            d3.selectAll('a#all').on('click', function() {
-                filterAll();
-                renderAll();
-            });
-
-            d3.selectAll('a#year').on('click', function () {
-                yearChart.filterAll();
-                redrawAll();
-            });
-
-            d3.selectAll('a#month').on('click', function () {
-                monthChart.filterAll();
-                redrawAll();
-            });
-
-            d3.selectAll('a#day').on('click', function () {
-                dayChart.filterAll();
-                redrawAll();
-            });*/
-
             //draw the viz!
             renderAll();
 
@@ -186,18 +165,30 @@ export default class ThrashDashDC {
     resetChart(chartName) {
 
     switch (chartName) {
-      case "chart-ring-year":
-        this.yearChart.filterAll();
-        break;
-      case "chart-ring-month":
-        this.monthChart.filterAll();
-        break;
-      case "chart-ring-day":
-        this.dayChart.filterAll();
-        break;
-      default:
-        //Statements executed when none of the values match the value of the expression
-        break;
+        case "chart-ring-year":
+            this.yearChart.filterAll();
+            break;
+        case "chart-ring-month":
+            this.monthChart.filterAll();
+            break;
+        case "chart-ring-day":
+            this.dayChart.filterAll();
+            break;
+        case "chart-bar-fun-factor":
+            this.funFactorChart.filterAll();
+            break;
+        case "chart-bar-crowd-factor":
+            this.crowdFactorChart.filterAll();
+            break;
+        case "chart-bar-hollow-factor":
+            this.hollowFactorChart.filterAll();
+            break;
+        case "chart-bar-quality-factor":
+            this.qualityFactorChart.filterAll();
+            break;
+        default:
+            //Statements executed when none of the values match the value of the expression
+            break;
     }
 
     redrawAll();
