@@ -7,7 +7,7 @@ export default class ThrashDashDC {
     constructor(el, props = {}) {
         //we initiate charts in constructor
         this.qualityFactorChart = barChart('#chart-bar-quality-factor');
-    //const hollowFactorChart = barChart('#chart-bar-hollow-factor');
+        this.hollowFactorChart = barChart('#chart-bar-hollow-factor');
     //const crowdFactorChart = barChart('#chart-bar-crowd-factor');
     //const funFactorChart = barChart('#chart-bar-fun-factor');
     //const yearChart = pieChart('#chart-ring-year');
@@ -22,6 +22,15 @@ export default class ThrashDashDC {
 
     render() {
         console.log('in render');
+      const qualityFactorChart = this.qualityFactorChart
+      const hollowFactorChart = this.hollowFactorChart;
+      //todo do the same as above
+      const crowdFactorChart = barChart('#chart-bar-crowd-factor');
+      const funFactorChart = barChart('#chart-bar-fun-factor');
+      const yearChart = pieChart('#chart-ring-year');
+      const monthChart = pieChart('#chart-ring-month');
+      const dayChart = pieChart('#chart-ring-day');
+
         d3.json('src/stores/thrashtown.json', function (error, data) {
             var surfData = data;
 
@@ -67,13 +76,7 @@ export default class ThrashDashDC {
             var countPerDay = dayDim.group().reduceCount();
 
             //const qualityFactorChart = barChart('#chart-bar-quality-factor');
-            let qualityFactorChart = this.qualityFactorChart
-            const hollowFactorChart = barChart('#chart-bar-hollow-factor');
-            const crowdFactorChart = barChart('#chart-bar-crowd-factor');
-            const funFactorChart = barChart('#chart-bar-fun-factor');
-            const yearChart = pieChart('#chart-ring-year');
-            const monthChart = pieChart('#chart-ring-month');
-            const dayChart = pieChart('#chart-ring-day');
+
 
             qualityFactorChart
                 .width(300)
