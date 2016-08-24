@@ -6,9 +6,17 @@ export default class ThrashDashDC {
 
     constructor(el, props = {}) {
         //we initiate charts in constructor
+        this.qualityFactorChart = barChart('#chart-bar-quality-factor');
+    //const hollowFactorChart = barChart('#chart-bar-hollow-factor');
+    //const crowdFactorChart = barChart('#chart-bar-crowd-factor');
+    //const funFactorChart = barChart('#chart-bar-fun-factor');
+    //const yearChart = pieChart('#chart-ring-year');
+    //const monthChart = pieChart('#chart-ring-month');
+    //const dayChart = pieChart('#chart-ring-day');
+
+
 
         console.log('the construcor');
-        this.numberFormat = d3.format(".2f");
 
     }
 
@@ -58,7 +66,8 @@ export default class ThrashDashDC {
             var countPerMonth = monthDim.group().reduceCount();
             var countPerDay = dayDim.group().reduceCount();
 
-            const qualityFactorChart = barChart('#chart-bar-quality-factor');
+            //const qualityFactorChart = barChart('#chart-bar-quality-factor');
+            let qualityFactorChart = this.qualityFactorChart
             const hollowFactorChart = barChart('#chart-bar-hollow-factor');
             const crowdFactorChart = barChart('#chart-bar-crowd-factor');
             const funFactorChart = barChart('#chart-bar-fun-factor');
@@ -154,7 +163,7 @@ export default class ThrashDashDC {
                 return order[d.key];
                 });
 
-            //register handlers
+/*            //register handlers
             d3.selectAll('a#all').on('click', function() {
                 filterAll();
                 renderAll();
@@ -173,11 +182,30 @@ export default class ThrashDashDC {
             d3.selectAll('a#day').on('click', function () {
                 dayChart.filterAll();
                 redrawAll();
-            });
+            });*/
 
             //draw the viz!
             renderAll();
 
         });
+    }
+    resetChart(chartName) {
+
+    switch (chartName) {
+      case "chart-ring-year":
+        yearChart.filterAll();
+        break;
+      case "chart-ring-month":
+        monthChart.filterAll();
+        break;
+      case "chart-ring-day":
+        dayChart.filterAll();
+        break;
+      default:
+        //Statements executed when none of the values match the value of the expression
+        break;
+    }
+
+    redrawAll();
     }
 }
