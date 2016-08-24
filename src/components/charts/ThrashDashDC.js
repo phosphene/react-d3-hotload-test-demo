@@ -8,11 +8,11 @@ export default class ThrashDashDC {
         //we initiate charts in constructor
         this.qualityFactorChart = barChart('#chart-bar-quality-factor');
         this.hollowFactorChart = barChart('#chart-bar-hollow-factor');
-    //const crowdFactorChart = barChart('#chart-bar-crowd-factor');
-    //const funFactorChart = barChart('#chart-bar-fun-factor');
-    //const yearChart = pieChart('#chart-ring-year');
-    //const monthChart = pieChart('#chart-ring-month');
-    //const dayChart = pieChart('#chart-ring-day');
+        this.crowdFactorChart = barChart('#chart-bar-crowd-factor');
+        this.funFactorChart = barChart('#chart-bar-fun-factor');
+        this.yearChart = pieChart('#chart-ring-year');
+        this.monthChart = pieChart('#chart-ring-month');
+        this.dayChart = pieChart('#chart-ring-day');
 
 
 
@@ -21,15 +21,14 @@ export default class ThrashDashDC {
     }
 
     render() {
-        console.log('in render');
-      const qualityFactorChart = this.qualityFactorChart
-      const hollowFactorChart = this.hollowFactorChart;
-      //todo do the same as above
-      const crowdFactorChart = barChart('#chart-bar-crowd-factor');
-      const funFactorChart = barChart('#chart-bar-fun-factor');
-      const yearChart = pieChart('#chart-ring-year');
-      const monthChart = pieChart('#chart-ring-month');
-      const dayChart = pieChart('#chart-ring-day');
+        //console.log('in render');
+        const qualityFactorChart = this.qualityFactorChart
+        const hollowFactorChart = this.hollowFactorChart;
+        const crowdFactorChart = this.crowdFactorChart;
+        const funFactorChart = this.funFactorChart;
+        const yearChart = this.yearChart;
+        const monthChart = this.monthChart;
+        const dayChart = this.dayChart;
 
         d3.json('src/stores/thrashtown.json', function (error, data) {
             var surfData = data;
@@ -40,11 +39,6 @@ export default class ThrashDashDC {
             const dayFormat = d3.time.format('%a');
 
             surfData.forEach(d=>{
-              /*d.sessionDateDt = new Date(d.sessionDate);
-                 d.sessionYearDt = d.sessionDateDt.getUTCFullYear();
-                 d.sessionMonthDt = d.sessionDateDt.getUTCMonth();
-                 console.log(typeof(d.sessionMonthDt));*/
-
                 let dateObj  = new Date(d.sessionDate);
                 d.sessionDateFormatted = fullDateFormat(dateObj);
                 d.sessionYear = +yearFormat(dateObj);
@@ -74,9 +68,6 @@ export default class ThrashDashDC {
             var countPerYear = yearDim.group().reduceCount();
             var countPerMonth = monthDim.group().reduceCount();
             var countPerDay = dayDim.group().reduceCount();
-
-            //const qualityFactorChart = barChart('#chart-bar-quality-factor');
-
 
             qualityFactorChart
                 .width(300)
