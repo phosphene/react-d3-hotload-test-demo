@@ -193,13 +193,13 @@ export default class ThrashDashDC {
 
     switch (chartName) {
       case "chart-ring-year":
-        yearChart.filterAll();
+        this.yearChart.filterAll();
         break;
       case "chart-ring-month":
-        monthChart.filterAll();
+        this.monthChart.filterAll();
         break;
       case "chart-ring-day":
-        dayChart.filterAll();
+        this.dayChart.filterAll();
         break;
       default:
         //Statements executed when none of the values match the value of the expression
