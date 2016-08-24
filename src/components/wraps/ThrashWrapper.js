@@ -44,20 +44,28 @@ class ThrashWrapper extends React.Component {
                         </div>
                     </div>
                 </div>
-              <div className="row">
-                <div className="col-xs-6 col-md-3">
-                  <div className="dc-chart" id="chart-bar-fun-factor"></div>
+                <div className="row">
+                    <div className="col-xs-6 col-md-3">
+                        <div className="dc-chart" id="chart-bar-fun-factor">
+                            <a className="reset" onClick={()=>clickReset("chart-bar-fun-factor")} style={cursorStyle}> reset</a>
+                        </div>
+                    </div>
+                    <div className="col-xs-6 col-md-3">
+                        <div className="dc-chart" id="chart-bar-crowd-factor">
+                            <a className="reset" onClick={()=>clickReset("chart-bar-crowd-factor")} style={cursorStyle}> reset</a>
+                        </div>
+                    </div>
+                    <div className="col-xs-6 col-md-3">
+                        <div className="dc-chart" id="chart-bar-hollow-factor">
+                            <a className="reset" onClick={()=>clickReset("chart-bar-hollow-factor")} style={cursorStyle}> reset</a>
+                        </div>
+                    </div>
+                    <div className="col-xs-6 col-md-3">
+                        <div className="dc-chart" id="chart-bar-quality-factor">
+                            <a className="reset" onClick={()=>clickReset("chart-bar-quality-factor")} style={cursorStyle}> reset</a>
+                        </div>
+                    </div>
                 </div>
-                <div className="col-xs-6 col-md-3">
-                  <div className="dc-chart" id="chart-bar-crowd-factor"></div>
-                </div>
-                <div className="col-xs-6 col-md-3">
-                  <div className="dc-chart" id="chart-bar-hollow-factor"></div>
-                </div>
-                <div className="col-xs-6 col-md-3">
-                  <div className="dc-chart" id="chart-bar-quality-factor"></div>
-                </div>
-              </div>
             </div>
         );
 
