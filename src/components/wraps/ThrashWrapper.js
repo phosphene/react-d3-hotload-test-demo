@@ -7,14 +7,16 @@ class ThrashWrapper extends React.Component {
 
     constructor(props) {
         super(props);
-        //console.log(props);
+        console.log(props);
 
     }
 
     render() {
 
         const pStyle = { marginRight: "15px"};
-        const cursorStyle = { display: 'none', cursor: 'pointer'};
+        {/*const cursorStyle = { display: 'none', cursor: 'pointer'};*/}
+        const cursorStyle = { visibility: 'hidden', cursor: 'pointer'};
+        const borderStyle = { borderStyle: 'dotted', marginTop: '30px' };
 
         const clickReset = (x) => {
           console.log(x);
