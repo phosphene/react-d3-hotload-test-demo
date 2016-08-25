@@ -13,15 +13,9 @@ export default class ThrashDashDC {
         this.yearChart = pieChart('#chart-ring-year');
         this.monthChart = pieChart('#chart-ring-month');
         this.dayChart = pieChart('#chart-ring-day');
-
-
-
-        console.log('the construcor');
-
     }
 
     render() {
-        //console.log('in render');
         const qualityFactorChart = this.qualityFactorChart
         const hollowFactorChart = this.hollowFactorChart;
         const crowdFactorChart = this.crowdFactorChart;
@@ -31,7 +25,7 @@ export default class ThrashDashDC {
         const dayChart = this.dayChart;
 
         d3.json('src/stores/thrashtown.json', function (error, data) {
-            var surfData = data;
+            const surfData = data;
 
             const fullDateFormat = d3.time.format("%a, %d %b %Y %X %Z");
             const yearFormat = d3.time.format('%Y');
@@ -43,31 +37,29 @@ export default class ThrashDashDC {
                 d.sessionDateFormatted = fullDateFormat(dateObj);
                 d.sessionYear = +yearFormat(dateObj);
                 d.sessionMonth = monthFormat(dateObj);
-                console.log(typeof(d.waveQuality));
                 d.sessionDay = dayFormat(dateObj);
-
             });
 
             const ttx = crossfilter(surfData);
 
             // create dimensions (x-axis values)
-            var qualityFactorDim  = ttx.dimension(pluck("waveQuality"));
-            var hollowFactorDim  = ttx.dimension(pluck("hollowness"));
-            var crowdFactorDim  = ttx.dimension(pluck("crowdedness"));
-            var funFactorDim  = ttx.dimension(pluck("funFactor"));
-            var yearDim  = ttx.dimension(pluck("sessionYear"));
-            var monthDim  = ttx.dimension(pluck("sessionMonth"));
-            var dayDim  = ttx.dimension(pluck("sessionDay"));
+            const qualityFactorDim  = ttx.dimension(pluck("waveQuality"));
+            const hollowFactorDim  = ttx.dimension(pluck("hollowness"));
+            const crowdFactorDim  = ttx.dimension(pluck("crowdedness"));
+            const funFactorDim  = ttx.dimension(pluck("funFactor"));
+            const yearDim  = ttx.dimension(pluck("sessionYear"));
+            const monthDim  = ttx.dimension(pluck("sessionMonth"));
+            const dayDim  = ttx.dimension(pluck("sessionDay"));
 
             // create groups (y-axis values)
-            var all = ttx.groupAll();
-            var countPerQualityFactor = qualityFactorDim.group().reduceCount();
-            var countPerHollowFactor = hollowFactorDim.group().reduceCount();
-            var countPerCrowdFactor = crowdFactorDim.group().reduceCount();
-            var countPerFunFactor = funFactorDim.group().reduceCount();
-            var countPerYear = yearDim.group().reduceCount();
-            var countPerMonth = monthDim.group().reduceCount();
-            var countPerDay = dayDim.group().reduceCount();
+            const all = ttx.groupAll();
+            const countPerQualityFactor = qualityFactorDim.group().reduceCount();
+            const countPerHollowFactor = hollowFactorDim.group().reduceCount();
+            const countPerCrowdFactor = crowdFactorDim.group().reduceCount();
+            const countPerFunFactor = funFactorDim.group().reduceCount();
+            const countPerYear = yearDim.group().reduceCount();
+            const countPerMonth = monthDim.group().reduceCount();
+            const countPerDay = dayDim.group().reduceCount();
 
             qualityFactorChart
                 .width(300)
@@ -135,7 +127,7 @@ export default class ThrashDashDC {
                 .group(countPerMonth)
                 .innerRadius(20)
                 .ordering(function (d) {
-                var order = {
+                const order = {
                   'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4,
                   'may': 5, 'jun': 6, 'jul': 7, 'aug': 8,
                   'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12
@@ -150,7 +142,7 @@ export default class ThrashDashDC {
                 .group(countPerDay)
                 .innerRadius(20)
                 .ordering(function (d) {
-                var order = {
+                const order = {
                   'mon': 0, 'tue': 1, 'wed': 2, 'thu': 3,
                   'fri': 4, 'sat': 5, 'sun': 6
                 }
