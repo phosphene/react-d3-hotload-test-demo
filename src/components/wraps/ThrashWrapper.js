@@ -29,7 +29,7 @@ class ThrashWrapper extends React.Component {
                     <div className="col-xs-2">
                         <div id="chart-ring-year">
                             <strong>Year</strong>
-                            <a className="reset" onClick={()=>clickReset("chart-ring-year")} style={cursorStyle}> reset</a>
+                            <a className="reset" onClick={()=>clickReset("chart-ring-year")}> reset</a>
                             <div className="clearfix"></div>
                         </div>
                     </div>
