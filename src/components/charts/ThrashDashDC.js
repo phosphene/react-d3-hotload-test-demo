@@ -126,7 +126,7 @@ export default class ThrashDashDC {
                 .dimension(monthDim)
                 .group(countPerMonth)
                 .innerRadius(20)
-                .ordering( (d) => {
+                .ordering((d) => {
                 const order = {
                   'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4,
                   'may': 5, 'jun': 6, 'jul': 7, 'aug': 8,
@@ -141,7 +141,7 @@ export default class ThrashDashDC {
                 .dimension(dayDim)
                 .group(countPerDay)
                 .innerRadius(20)
-                .ordering( (d) => {
+                .ordering((d) => {
                 const order = {
                   'mon': 0, 'tue': 1, 'wed': 2, 'thu': 3,
                   'fri': 4, 'sat': 5, 'sun': 6
