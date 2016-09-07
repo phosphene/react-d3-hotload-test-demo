@@ -1,11 +1,12 @@
 import * as d3 from 'd3';
 import {crossfilter, units, geoChoroplethChart, bubbleChart, renderAll, redrawAll, filterAll, pieChart, barChart, dataCount, dataTable, pluck} from 'dc';
-
+import * as colorbrewer from "colorbrewer";
 //we can call export at the top of the class declaration
 export default class ThrashDashDC {
 
     constructor(el, props = {}) {
         //we initiate charts in constructor
+        this.stickBubbleChart = bubbleChart('#chart-bubble-stick');
         this.qualityFactorChart = barChart('#chart-bar-quality-factor');
         this.hollowFactorChart = barChart('#chart-bar-hollow-factor');
         this.crowdFactorChart = barChart('#chart-bar-crowd-factor');
@@ -16,7 +17,8 @@ export default class ThrashDashDC {
     }
 
     render() {
-        const qualityFactorChart = this.qualityFactorChart
+        const stickBubbleChart = this.stickBubbleChart;
+        const qualityFactorChart = this.qualityFactorChart;
         const hollowFactorChart = this.hollowFactorChart;
         const crowdFactorChart = this.crowdFactorChart;
         const funFactorChart = this.funFactorChart;
@@ -38,9 +40,12 @@ export default class ThrashDashDC {
                 d.sessionYear = +yearFormat(dateObj);
                 d.sessionMonth = monthFormat(dateObj);
                 d.sessionDay = dayFormat(dateObj);
+                //let stick = d.board.name;
+                //console.log(stick);
             });
 
             const ttx = crossfilter(surfData);
+            //console.log(ttx.size());
 
             // create dimensions (x-axis values)
             const qualityFactorDim  = ttx.dimension(pluck("waveQuality"));
@@ -50,6 +55,9 @@ export default class ThrashDashDC {
             const yearDim  = ttx.dimension(pluck("sessionYear"));
             const monthDim  = ttx.dimension(pluck("sessionMonth"));
             const dayDim  = ttx.dimension(pluck("sessionDay"));
+            const stickDim  = ttx.dimension(pluck("board", (x,i) => {
+                return x.name;
+            }));
 
             // create groups (y-axis values)
             const all = ttx.groupAll();
@@ -60,6 +68,48 @@ export default class ThrashDashDC {
             const countPerYear = yearDim.group().reduceCount();
             const countPerMonth = monthDim.group().reduceCount();
             const countPerDay = dayDim.group().reduceCount();
+            const stickGroup = stickDim.group().reduce(
+                (p, v) => {
+                    p.funFactor += v.funFactor;
+                    return p;
+                },
+                (p, v) => {
+                    p.funFactor -= v.funFactor;
+                    return p
+                },
+                () => {
+                    return {
+                        funFactor:0
+                    };
+                }
+            );
+
+
+
+            stickBubbleChart
+                .width(900)
+                .height(250)
+                .transitionDuration(1500)
+                .margins({top:10, right:50, bottom:30, left:40})
+                .dimension(stickDim)
+                .group(stickGroup)
+                .keyAccessor((p) => {
+                    return p.value.funFactor;
+                })
+                .valueAccessor((p) => {
+                    return p.value.funFactor;
+                })
+                .radiusValueAccessor((p) => {
+                    return p.value.funFactor;
+                })
+                .maxBubbleRelativeSize(0.3)
+                .x(d3.scale.linear().domain([-2500, 2500]))
+                .y(d3.scale.linear().domain([-100, 100]))
+                .r(d3.scale.linear().domain([0, 4000]))
+                .elasticY(true)
+                .elasticX(true)
+                .yAxisPadding(100)
+                .xAxisPadding(500)
 
             qualityFactorChart
                 .width(300)

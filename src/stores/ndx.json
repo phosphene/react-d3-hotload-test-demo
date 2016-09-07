@@ -1,0 +1,44 @@
+[
+  {
+    "date": "6/30/2012",
+    "open": 2566.84,
+    "high": 2615.82,
+    "low": {
+        "test1": "one",
+        "test2": "two"
+    },
+    "funFactor":3,
+    "board": {
+        "_id": "56e8b848b557eb0300f9f81f",
+        "archived": false,
+        "category": "Shortboard",
+        "default": true,
+        "name": "js monsta 3 thruster squash",
+        "size": "6'4\""
+    },
+    "close": 2615.72,
+    "volume": 18325310,
+    "oi": 0
+  },
+  {
+    "date": "6/31/2012",
+    "open": 2566.84,
+    "high": 2615.82,
+    "low": {
+        "test1": "one",
+        "test2": "two"
+    },
+    "funFactor":5,
+    "board": {
+        "_id": "56e8b848b557eb0300f9f81f",
+        "archived": false,
+        "category": "Shortboard",
+        "default": true,
+        "name": "js monsta 3 thruster squash",
+        "size": "6'4\""
+    },
+    "close": 2615.72,
+    "volume": 18325310,
+    "oi": 0
+  }
+]

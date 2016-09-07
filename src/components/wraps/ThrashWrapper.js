@@ -7,7 +7,7 @@ class ThrashWrapper extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props);
+        //console.log(props);
 
     }
 
@@ -19,17 +19,22 @@ class ThrashWrapper extends React.Component {
         const borderStyle = { borderStyle: 'dotted', marginTop: '30px' };
 
         const clickReset = (x) => {
-          console.log(x);
+          //console.log(x);
           this.dashboard.resetChart(x);
         }
 
         return (
             <div className="container-fluid">
                 <div className="row">
+                    <div className="col-xs-12">
+                        <div id="chart-bubble-stick"></div>
+                    </div>
+                </div>
+                <div className="row">
                     <div className="col-xs-2">
                         <div id="chart-ring-year">
                             <strong>Year</strong>
-                            <a className="reset" onClick={()=>clickReset("chart-ring-year")}> reset</a>
+                            <a className="reset" onClick={()=>clickReset("chart-ring-year")} style={cursorStyle}> reset</a>
                             <div className="clearfix"></div>
                         </div>
                     </div>

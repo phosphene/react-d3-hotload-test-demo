@@ -6,8 +6,8 @@ class App extends Component {
   render() {
     return (
       <Layout>
-      {/*<ThrashWrapper/>*/}
-        <NasDashWrapper/>
+      <ThrashWrapper/>
+      {/*<NasDashWrapper/>*/}
       </Layout>
     );
   }
