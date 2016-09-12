@@ -70,16 +70,30 @@ export default class ThrashDashDC {
             const countPerDay = dayDim.group().reduceCount();
             const stickGroup = stickDim.group().reduce(
                 (p, v) => {
+                    console.log(p);
+                    console.log(v);
+                    ++p.count;
                     p.funFactor += v.funFactor;
+                    p.waveQuality += v.waveQuality;
+                    p.avgFunFactor = p.funFactor / p.count;
+                    p.avgWaveQuality = p.waveQuality / p.count;
                     return p;
                 },
                 (p, v) => {
                     p.funFactor -= v.funFactor;
+                    p.waveQuality -= v.waveQuality;
+                    p.avgFunFactor = p.count ? p.funFactor / p.count : 0;
+                    p.avgWaveQuality = p.count ? p.waveQuality / p.count : 0;
+                    --p.count;
                     return p
                 },
                 () => {
                     return {
-                        funFactor:0
+                        count:0,
+                        waveQuality:0,
+                        funFactor:0,
+                        avgFunFactor:0,
+                        avgWaveQuality:0
                     };
                 }
             );
@@ -94,22 +108,30 @@ export default class ThrashDashDC {
                 .dimension(stickDim)
                 .group(stickGroup)
                 .keyAccessor((p) => {
-                    return p.value.funFactor;
+                    return p.value.avgWaveQuality;
                 })
                 .valueAccessor((p) => {
-                    return p.value.funFactor;
+                    return p.value.avgFunFactor;
                 })
                 .radiusValueAccessor((p) => {
-                    return p.value.funFactor;
+                    return p.value.count;
                 })
-                .maxBubbleRelativeSize(0.3)
-                .x(d3.scale.linear().domain([-2500, 2500]))
-                .y(d3.scale.linear().domain([-100, 100]))
-                .r(d3.scale.linear().domain([0, 4000]))
-                .elasticY(true)
-                .elasticX(true)
+                .maxBubbleRelativeSize(0.7)
+                .x(d3.scale.linear().domain([0, 5]))
+                .y(d3.scale.linear().domain([0, 5]))
+                .r(d3.scale.linear().domain([0, 1000]))
+                .elasticY(false)
+                .elasticX(false)
                 .yAxisPadding(100)
                 .xAxisPadding(500)
+                .renderHorizontalGridLines(true)
+                .renderVerticalGridLines(true)
+                .xAxisLabel('Quality')
+                .yAxisLabel('Fun')
+                .yAxis().tickFormat(function (v) {
+                  return v + '%';
+                });
+
 
             qualityFactorChart
                 .width(300)
