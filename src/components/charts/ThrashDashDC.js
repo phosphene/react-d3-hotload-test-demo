@@ -70,30 +70,46 @@ export default class ThrashDashDC {
             const countPerDay = dayDim.group().reduceCount();
             const stickGroup = stickDim.group().reduce(
                 (p, v) => {
-                    console.log(p);
-                    console.log(v);
                     ++p.count;
+                    p.crowdedness += v.crowdedness;
+                    p.hollowness += v.hollowness;
                     p.funFactor += v.funFactor;
                     p.waveQuality += v.waveQuality;
+                    p.avgCrowdedness = p.crowdedness / p.count;
+                    p.avgHollowness = p.hollowness / p.count;
                     p.avgFunFactor = p.funFactor / p.count;
                     p.avgWaveQuality = p.waveQuality / p.count;
+                    p.avgFunToQuality = p.avgWaveQuality ?
+                        Math.floor((p.avgWaveQuality + p.avgFunFactor)) : 0;
+                    console.log(p.avgFunToQuality);
                     return p;
                 },
                 (p, v) => {
+                    p.crowdedness -= v.crowdedness;
+                    p.hollowness -= v.hollowness;
                     p.funFactor -= v.funFactor;
                     p.waveQuality -= v.waveQuality;
+                    p.avgCrowdedness = p.count ? v.crowdedness / p.count : 0;
+                    p.avgHollowness = p.count ? v.hollowness / p.count : 0;;
                     p.avgFunFactor = p.count ? p.funFactor / p.count : 0;
                     p.avgWaveQuality = p.count ? p.waveQuality / p.count : 0;
+                    p.avgFunToQuality = p.avgWaveQuality ?
+                        Math.floor(p.avgWaveQuality + p.avgFunFactor) : 0;
                     --p.count;
                     return p
                 },
                 () => {
                     return {
                         count:0,
+                        crowdedness:0,
+                        hollowness:0,
                         waveQuality:0,
                         funFactor:0,
                         avgFunFactor:0,
-                        avgWaveQuality:0
+                        avgWaveQuality:0,
+                        avgCrowdedness:0,
+                        avgHollowness:0,
+                        avgFunToQuality:0
                     };
                 }
             );
@@ -101,12 +117,17 @@ export default class ThrashDashDC {
 
 
             stickBubbleChart
-                .width(900)
+                .width(400)
                 .height(250)
                 .transitionDuration(1500)
                 .margins({top:10, right:50, bottom:30, left:40})
                 .dimension(stickDim)
                 .group(stickGroup)
+                .colors(colorbrewer.Spectral[6])
+                .colorDomain([2, 20])
+                .colorAccessor((p) => {
+                    return p.value.count;
+                })
                 .keyAccessor((p) => {
                     return p.value.avgWaveQuality;
                 })
@@ -114,12 +135,12 @@ export default class ThrashDashDC {
                     return p.value.avgFunFactor;
                 })
                 .radiusValueAccessor((p) => {
-                    return p.value.count;
+                    return p.value.avgFunToQuality;
                 })
-                .maxBubbleRelativeSize(0.7)
+                .maxBubbleRelativeSize(0.3)
                 .x(d3.scale.linear().domain([0, 5]))
                 .y(d3.scale.linear().domain([0, 5]))
-                .r(d3.scale.linear().domain([0, 1000]))
+                .r(d3.scale.linear().domain([0, 500]))
                 .elasticY(false)
                 .elasticX(false)
                 .yAxisPadding(100)
