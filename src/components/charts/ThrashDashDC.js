@@ -74,13 +74,11 @@ export default class ThrashDashDC {
             const stickGroupQuality = stickDimQuality.group().reduce(
                 (p, v) => {
                     ++p.count;
+                    p.board = v.board.name;
                     p.funFactor += v.funFactor;
                     p.waveQuality += v.waveQuality;
                     p.avgFunFactor = p.funFactor / p.count;
                     p.avgWaveQuality = p.waveQuality / p.count;
-                    p.avgFunToQuality = p.avgWaveQuality ?
-                        Math.floor(p.avgWaveQuality + p.avgFunFactor) : 0;
-                    console.log(p.avgFunToQuality);
                     return p;
                 },
                 (p, v) => {
@@ -88,19 +86,17 @@ export default class ThrashDashDC {
                     p.waveQuality -= v.waveQuality;
                     p.avgFunFactor = p.count ? p.funFactor / p.count : 0;
                     p.avgWaveQuality = p.count ? p.waveQuality / p.count : 0;
-                    p.avgFunToQuality = p.avgWaveQuality ?
-                        Math.floor(p.avgWaveQuality + p.avgFunFactor) : 0;
                     --p.count;
                     return p
                 },
                 () => {
                     return {
+                        board:0,
                         count:0,
                         waveQuality:0,
                         funFactor:0,
                         avgFunFactor:0,
                         avgWaveQuality:0,
-                        avgFunToQuality:0
                     };
                 }
             );
@@ -108,6 +104,7 @@ export default class ThrashDashDC {
             const stickGroupCrowd = stickDimCrowd.group().reduce(
                 (p, v) => {
                     ++p.count;
+                    p.board = v.board.name;
                     p.crowdedness += v.crowdedness;
                     p.funFactor += v.funFactor;
                     p.avgCrowdedness = p.crowdedness / p.count;
@@ -128,6 +125,7 @@ export default class ThrashDashDC {
                 },
                 () => {
                     return {
+                        board:0,
                         count:0,
                         crowdedness:0,
                         funFactor:0,
@@ -146,10 +144,9 @@ export default class ThrashDashDC {
                 .margins({top:10, right:50, bottom:30, left:40})
                 .dimension(stickDimQuality)
                 .group(stickGroupQuality)
-                .colors(colorbrewer.Spectral[6])
-                .colorDomain([2, 20])
+                .ordinalColors(colorbrewer.Spectral[5])
                 .colorAccessor((p) => {
-                    return p.value.count;
+                    return p.value.board;
                 })
                 .keyAccessor((p) => {
                     return p.value.avgWaveQuality;
@@ -158,12 +155,12 @@ export default class ThrashDashDC {
                     return p.value.avgFunFactor;
                 })
                 .radiusValueAccessor((p) => {
-                    return p.value.avgFunToQuality;
+                    return p.value.count;
                 })
-                .maxBubbleRelativeSize(0.3)
+                .maxBubbleRelativeSize(0.2)
                 .x(d3.scale.linear().domain([0, 5]))
                 .y(d3.scale.linear().domain([0, 5]))
-                .r(d3.scale.linear().domain([0, 500]))
+                .r(d3.scale.linear().domain([0, 100]))
                 .elasticY(false)
                 .elasticX(false)
                 .yAxisPadding(100)
@@ -183,10 +180,9 @@ export default class ThrashDashDC {
                 .margins({top:10, right:50, bottom:30, left:40})
                 .dimension(stickDimCrowd)
                 .group(stickGroupCrowd)
-                .colors(colorbrewer.Spectral[6])
-                .colorDomain([2, 20])
+                .ordinalColors(colorbrewer.Spectral[5])
                 .colorAccessor((p) => {
-                    return p.value.count;
+                    return p.value.board;
                 })
                 .keyAccessor((p) => {
                     return p.value.avgCrowdedness;
@@ -195,12 +191,12 @@ export default class ThrashDashDC {
                     return p.value.avgFunFactor;
                 })
                 .radiusValueAccessor((p) => {
-                    return p.value.avgFunToCrowd;
+                    return p.value.count;
                 })
-                .maxBubbleRelativeSize(0.3)
+                .maxBubbleRelativeSize(0.2)
                 .x(d3.scale.linear().domain([0, 5]))
                 .y(d3.scale.linear().domain([0, 5]))
-                .r(d3.scale.linear().domain([0, 500]))
+                .r(d3.scale.linear().domain([0, 100]))
                 .elasticY(false)
                 .elasticX(false)
                 .yAxisPadding(100)
