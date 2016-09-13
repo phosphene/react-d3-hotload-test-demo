@@ -6,7 +6,8 @@ export default class ThrashDashDC {
 
     constructor(el, props = {}) {
         //we initiate charts in constructor
-        this.stickBubbleChart = bubbleChart('#chart-bubble-stick');
+        this.stickFunQualityBubbleChart = bubbleChart('#chart-bubble-stick-fun-quality');
+        this.stickFunCrowdBubbleChart = bubbleChart('#chart-bubble-stick-fun-crowd');
         this.qualityFactorChart = barChart('#chart-bar-quality-factor');
         this.hollowFactorChart = barChart('#chart-bar-hollow-factor');
         this.crowdFactorChart = barChart('#chart-bar-crowd-factor');
@@ -17,7 +18,8 @@ export default class ThrashDashDC {
     }
 
     render() {
-        const stickBubbleChart = this.stickBubbleChart;
+        const stickFunQualityBubbleChart = this.stickFunQualityBubbleChart;
+        const stickFunCrowdBubbleChart = this.stickFunCrowdBubbleChart;
         const qualityFactorChart = this.qualityFactorChart;
         const hollowFactorChart = this.hollowFactorChart;
         const crowdFactorChart = this.crowdFactorChart;
@@ -40,8 +42,6 @@ export default class ThrashDashDC {
                 d.sessionYear = +yearFormat(dateObj);
                 d.sessionMonth = monthFormat(dateObj);
                 d.sessionDay = dayFormat(dateObj);
-                //let stick = d.board.name;
-                //console.log(stick);
             });
 
             const ttx = crossfilter(surfData);
@@ -55,7 +55,10 @@ export default class ThrashDashDC {
             const yearDim  = ttx.dimension(pluck("sessionYear"));
             const monthDim  = ttx.dimension(pluck("sessionMonth"));
             const dayDim  = ttx.dimension(pluck("sessionDay"));
-            const stickDim  = ttx.dimension(pluck("board", (x,i) => {
+            const stickDimQuality  = ttx.dimension(pluck("board", (x,i) => {
+                return x.name;
+            }));
+            const stickDimCrowd  = ttx.dimension(pluck("board", (x,i) => {
                 return x.name;
             }));
 
@@ -68,29 +71,21 @@ export default class ThrashDashDC {
             const countPerYear = yearDim.group().reduceCount();
             const countPerMonth = monthDim.group().reduceCount();
             const countPerDay = dayDim.group().reduceCount();
-            const stickGroup = stickDim.group().reduce(
+            const stickGroupQuality = stickDimQuality.group().reduce(
                 (p, v) => {
                     ++p.count;
-                    p.crowdedness += v.crowdedness;
-                    p.hollowness += v.hollowness;
                     p.funFactor += v.funFactor;
                     p.waveQuality += v.waveQuality;
-                    p.avgCrowdedness = p.crowdedness / p.count;
-                    p.avgHollowness = p.hollowness / p.count;
                     p.avgFunFactor = p.funFactor / p.count;
                     p.avgWaveQuality = p.waveQuality / p.count;
                     p.avgFunToQuality = p.avgWaveQuality ?
-                        Math.floor((p.avgWaveQuality + p.avgFunFactor)) : 0;
+                        Math.floor(p.avgWaveQuality + p.avgFunFactor) : 0;
                     console.log(p.avgFunToQuality);
                     return p;
                 },
                 (p, v) => {
-                    p.crowdedness -= v.crowdedness;
-                    p.hollowness -= v.hollowness;
                     p.funFactor -= v.funFactor;
                     p.waveQuality -= v.waveQuality;
-                    p.avgCrowdedness = p.count ? v.crowdedness / p.count : 0;
-                    p.avgHollowness = p.count ? v.hollowness / p.count : 0;;
                     p.avgFunFactor = p.count ? p.funFactor / p.count : 0;
                     p.avgWaveQuality = p.count ? p.waveQuality / p.count : 0;
                     p.avgFunToQuality = p.avgWaveQuality ?
@@ -101,28 +96,56 @@ export default class ThrashDashDC {
                 () => {
                     return {
                         count:0,
-                        crowdedness:0,
-                        hollowness:0,
                         waveQuality:0,
                         funFactor:0,
                         avgFunFactor:0,
                         avgWaveQuality:0,
-                        avgCrowdedness:0,
-                        avgHollowness:0,
                         avgFunToQuality:0
                     };
                 }
             );
 
+            const stickGroupCrowd = stickDimCrowd.group().reduce(
+                (p, v) => {
+                    ++p.count;
+                    p.crowdedness += v.crowdedness;
+                    p.funFactor += v.funFactor;
+                    p.avgCrowdedness = p.crowdedness / p.count;
+                    p.avgFunFactor = p.funFactor / p.count;
+                    p.avgFunToCrowd = p.avgCrowdedness ?
+                        Math.floor(p.avgFunFactor + p.avgCrowdedness) : 0;
+                    return p;
+                },
+                (p, v) => {
+                    p.crowdedness -= v.crowdedness;
+                    p.funFactor -= v.funFactor;
+                    p.avgCrowdedness = p.count ? v.crowdedness / p.count : 0;
+                    p.avgFunFactor = p.count ? p.funFactor / p.count : 0;
+                    p.avgFunToCrowd = p.avgCrowdedness ?
+                        Math.floor(p.avgFunFactor + p.avgCrowdedness) : 0;
+                    --p.count;
+                    return p
+                },
+                () => {
+                    return {
+                        count:0,
+                        crowdedness:0,
+                        funFactor:0,
+                        avgFunFactor:0,
+                        avgCrowdedness:0,
+                        avgFunToCrowd:0,
+                    };
+                }
+            );
 
 
-            stickBubbleChart
+            stickFunQualityBubbleChart
                 .width(400)
                 .height(250)
                 .transitionDuration(1500)
                 .margins({top:10, right:50, bottom:30, left:40})
-                .dimension(stickDim)
-                .group(stickGroup)
+                .dimension(stickDimQuality)
+                .group(stickGroupQuality)
                 .colors(colorbrewer.Spectral[6])
                 .colorDomain([2, 20])
                 .colorAccessor((p) => {
@@ -148,6 +171,43 @@ export default class ThrashDashDC {
                 .renderHorizontalGridLines(true)
                 .renderVerticalGridLines(true)
                 .xAxisLabel('Quality')
+                .yAxisLabel('Fun')
+                .yAxis().tickFormat(function (v) {
+                  return v + '%';
+                });
+
+            stickFunCrowdBubbleChart
+                .width(400)
+                .height(250)
+                .transitionDuration(1500)
+                .margins({top:10, right:50, bottom:30, left:40})
+                .dimension(stickDimCrowd)
+                .group(stickGroupCrowd)
+                .colors(colorbrewer.Spectral[6])
+                .colorDomain([2, 20])
+                .colorAccessor((p) => {
+                    return p.value.count;
+                })
+                .keyAccessor((p) => {
+                    return p.value.avgCrowdedness;
+                })
+                .valueAccessor((p) => {
+                    return p.value.avgFunFactor;
+                })
+                .radiusValueAccessor((p) => {
+                    return p.value.avgFunToCrowd;
+                })
+                .maxBubbleRelativeSize(0.3)
+                .x(d3.scale.linear().domain([0, 5]))
+                .y(d3.scale.linear().domain([0, 5]))
+                .r(d3.scale.linear().domain([0, 500]))
+                .elasticY(false)
+                .elasticX(false)
+                .yAxisPadding(100)
+                .xAxisPadding(500)
+                .renderHorizontalGridLines(true)
+                .renderVerticalGridLines(true)
+                .xAxisLabel('Crowd')
                 .yAxisLabel('Fun')
                 .yAxis().tickFormat(function (v) {
                   return v + '%';
