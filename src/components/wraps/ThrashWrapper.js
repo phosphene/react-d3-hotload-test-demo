@@ -26,10 +26,16 @@ class ThrashWrapper extends React.Component {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-xs-12">
-                        <div id="chart-bubble-stick"></div>
+                    <div className="col-xs-4">
+                        <div id="chart-bubble-stick-fun-hollow"></div>
                     </div>
-                </div>
+                    <div className="col-xs-4">
+                        <div id="chart-bubble-stick-fun-quality"></div>
+                    </div>
+                    <div className="col-xs-4">
+                        <div id="chart-bubble-stick-fun-crowd"></div>
+                    </div>
+               </div>
                 <div className="row">
                     <div className="col-xs-2">
                         <div id="chart-ring-year">

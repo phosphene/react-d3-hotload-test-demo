@@ -6,6 +6,7 @@ export default class ThrashDashDC {
 
     constructor(el, props = {}) {
         //we initiate charts in constructor
+        this.stickFunHollowBubbleChart = bubbleChart('#chart-bubble-stick-fun-hollow');
         this.stickFunQualityBubbleChart = bubbleChart('#chart-bubble-stick-fun-quality');
         this.stickFunCrowdBubbleChart = bubbleChart('#chart-bubble-stick-fun-crowd');
         this.qualityFactorChart = barChart('#chart-bar-quality-factor');
@@ -18,6 +19,7 @@ export default class ThrashDashDC {
     }
 
     render() {
+        const stickFunHollowBubbleChart = this.stickFunHollowBubbleChart;
         const stickFunQualityBubbleChart = this.stickFunQualityBubbleChart;
         const stickFunCrowdBubbleChart = this.stickFunCrowdBubbleChart;
         const qualityFactorChart = this.qualityFactorChart;
@@ -59,6 +61,9 @@ export default class ThrashDashDC {
                 return x.name;
             }));
             const stickDimCrowd  = ttx.dimension(pluck("board", (x,i) => {
+                return x.name;
+            }));
+            const stickDimHollow  = ttx.dimension(pluck("board", (x,i) => {
                 return x.name;
             }));
 
@@ -109,8 +114,6 @@ export default class ThrashDashDC {
                     p.funFactor += v.funFactor;
                     p.avgCrowdedness = p.crowdedness / p.count;
                     p.avgFunFactor = p.funFactor / p.count;
-                    p.avgFunToCrowd = p.avgCrowdedness ?
-                        Math.floor(p.avgFunFactor + p.avgCrowdedness) : 0;
                     return p;
                 },
                 (p, v) => {
@@ -118,8 +121,6 @@ export default class ThrashDashDC {
                     p.funFactor -= v.funFactor;
                     p.avgCrowdedness = p.count ? v.crowdedness / p.count : 0;
                     p.avgFunFactor = p.count ? p.funFactor / p.count : 0;
-                    p.avgFunToCrowd = p.avgCrowdedness ?
-                        Math.floor(p.avgFunFactor + p.avgCrowdedness) : 0;
                     --p.count;
                     return p
                 },
@@ -136,6 +137,37 @@ export default class ThrashDashDC {
                 }
             );
 
+            const stickGroupHollow = stickDimHollow.group().reduce(
+                (p, v) => {
+                    ++p.count;
+                    p.board = v.board.name;
+                    p.hollowness += v.hollowness;
+                    p.funFactor += v.funFactor;
+                    p.avgHollowness = p.hollowness / p.count;
+                    p.avgFunFactor = p.funFactor / p.count;
+                    return p;
+                },
+                (p, v) => {
+                    p.hollowness -= v.hollowness;
+                    p.funFactor -= v.funFactor;
+                    p.avgHollowness = p.count ? v.hollowness / p.count : 0;
+                    p.avgFunFactor = p.count ? p.funFactor / p.count : 0;
+                    --p.count;
+                    return p
+                },
+                () => {
+                    return {
+                        board:0,
+                        count:0,
+                        hollowness:0,
+                        funFactor:0,
+                        avgFunFactor:0,
+                        avgCrowdedness:0,
+                        avgFunToCrowd:0,
+                    };
+                }
+            );
+
 
             stickFunQualityBubbleChart
                 .width(400)
@@ -144,7 +176,7 @@ export default class ThrashDashDC {
                 .margins({top:10, right:50, bottom:30, left:40})
                 .dimension(stickDimQuality)
                 .group(stickGroupQuality)
-                .ordinalColors(colorbrewer.Spectral[5])
+                .ordinalColors(colorbrewer.Spectral[7])
                 .colorAccessor((p) => {
                     return p.value.board;
                 })
@@ -173,6 +205,42 @@ export default class ThrashDashDC {
                   return v + '%';
                 });
 
+            stickFunHollowBubbleChart
+                .width(400)
+                .height(250)
+                .transitionDuration(1500)
+                .margins({top:10, right:50, bottom:30, left:40})
+                .dimension(stickDimHollow)
+                .group(stickGroupHollow)
+                .ordinalColors(colorbrewer.Spectral[7])
+                .colorAccessor((p) => {
+                    return p.value.board;
+                })
+                .keyAccessor((p) => {
+                    return p.value.avgHollowness;
+                })
+                .valueAccessor((p) => {
+                    return p.value.avgFunFactor;
+                })
+                .radiusValueAccessor((p) => {
+                    return p.value.count;
+                })
+                .maxBubbleRelativeSize(0.2)
+                .x(d3.scale.linear().domain([0, 5]))
+                .y(d3.scale.linear().domain([0, 5]))
+                .r(d3.scale.linear().domain([0, 100]))
+                .elasticY(false)
+                .elasticX(false)
+                .yAxisPadding(100)
+                .xAxisPadding(500)
+                .renderHorizontalGridLines(true)
+                .renderVerticalGridLines(true)
+                .xAxisLabel('Hollow')
+                .yAxisLabel('Fun')
+                .yAxis().tickFormat(function (v) {
+                  return v + '%';
+                });
+
             stickFunCrowdBubbleChart
                 .width(400)
                 .height(250)
@@ -180,7 +248,7 @@ export default class ThrashDashDC {
                 .margins({top:10, right:50, bottom:30, left:40})
                 .dimension(stickDimCrowd)
                 .group(stickGroupCrowd)
-                .ordinalColors(colorbrewer.Spectral[5])
+                .ordinalColors(colorbrewer.Spectral[7])
                 .colorAccessor((p) => {
                     return p.value.board;
                 })
