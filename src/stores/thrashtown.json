@@ -6,13 +6,13 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
         "crowdedness": 1,
         "friends": [],
-        "funFactor": 2,
+        "funFactor": 5,
         "hollowness": 2,
         "otherFriends": 0,
         "sessionDate": "2016-07-05T00:51:00.000Z",
@@ -32,7 +32,7 @@
             "_id": "545d47dcc890e802004b8a42",
             "name": "jody"
         },
-        "waveQuality": 3
+        "waveQuality": 4
     },
     {
         "_id": "577c570b1863120300309c77",
@@ -76,13 +76,13 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
-        "crowdedness": 2,
+        "crowdedness": 5,
         "friends": [],
-        "funFactor": 2,
+        "funFactor": 5,
         "hollowness": 1,
         "otherFriends": 0,
         "sessionDate": "2016-07-02T04:39:00.000Z",
@@ -102,7 +102,7 @@
             "_id": "545d47dcc890e802004b8a42",
             "name": "jody"
         },
-        "waveQuality": 3
+        "waveQuality": 4
     },
     {
         "_id": "5775d8913d6498030004acd9",
@@ -111,7 +111,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -146,7 +146,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -181,7 +181,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -216,7 +216,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -251,7 +251,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -286,7 +286,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -321,7 +321,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -356,7 +356,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -391,7 +391,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -426,7 +426,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -461,7 +461,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -496,7 +496,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -531,7 +531,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -566,7 +566,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -601,7 +601,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -636,7 +636,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -671,7 +671,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -706,7 +706,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -741,7 +741,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -776,7 +776,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -811,7 +811,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -846,7 +846,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -881,7 +881,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -916,7 +916,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -951,7 +951,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -986,7 +986,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -1021,7 +1021,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -1056,7 +1056,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -1091,7 +1091,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -1126,7 +1126,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -1161,7 +1161,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "js monsta 5 fin thumb",
+            "name": "js m3 t",
             "size": "6'5\""
         },
         "board_id": "56f632a7178e2503002b1e0b",
@@ -1196,7 +1196,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -1231,7 +1231,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -1301,7 +1301,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -1336,7 +1336,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -1371,7 +1371,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -1406,7 +1406,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -1441,7 +1441,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "sled - Hayden",
+            "name": "sled",
             "size": "6'4\""
         },
         "board_id": "56f638c9178e2503002b1e15",
@@ -1476,7 +1476,7 @@
             "archived": false,
             "category": "Gun",
             "default": false,
-            "name": "LINDEN",
+            "name": "linden",
             "size": "8'0\""
         },
         "board_id": "56ff2c61f1702603006809dc",
@@ -1511,7 +1511,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -1546,7 +1546,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -1581,7 +1581,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -1616,7 +1616,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
@@ -1686,7 +1686,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "sled - Hayden",
+            "name": "sled",
             "size": "6'4\""
         },
         "board_id": "56f638c9178e2503002b1e15",
@@ -1721,7 +1721,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "sled - Hayden",
+            "name": "sled",
             "size": "6'4\""
         },
         "board_id": "56f638c9178e2503002b1e15",
@@ -1791,7 +1791,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "sled - Hayden",
+            "name": "sled",
             "size": "6'4\""
         },
         "board_id": "56f638c9178e2503002b1e15",
@@ -1861,7 +1861,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "sled - Hayden",
+            "name": "sled",
             "size": "6'4\""
         },
         "board_id": "56f638c9178e2503002b1e15",
@@ -1896,7 +1896,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "sled - Hayden",
+            "name": "sled",
             "size": "6'4\""
         },
         "board_id": "56f638c9178e2503002b1e15",
@@ -1931,7 +1931,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "sled - Hayden",
+            "name": "sled",
             "size": "6'4\""
         },
         "board_id": "56f638c9178e2503002b1e15",
@@ -1966,7 +1966,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "sled - Hayden",
+            "name": "sled",
             "size": "6'4\""
         },
         "board_id": "56f638c9178e2503002b1e15",
@@ -2071,13 +2071,13 @@
             "archived": false,
             "category": "Shortboard",
             "default": true,
-            "name": "js monsta 3 thruster squash",
+            "name": "js m3 s",
             "size": "6'4\""
         },
         "board_id": "56e8b848b557eb0300f9f81f",
-        "crowdedness": 4,
+        "crowdedness": 5,
         "friends": [],
-        "funFactor": 3,
+        "funFactor": 5,
         "hollowness": 2,
         "otherFriends": 0,
         "sessionDate": "2015-12-22T08:16:00.000Z",
@@ -2097,7 +2097,7 @@
             "_id": "545d47dcc890e802004b8a42",
             "name": "jody"
         },
-        "waveQuality": 3
+        "waveQuality": 4
     },
     {
         "_id": "56f6371d178e2503002b1e11",
@@ -2217,7 +2217,7 @@
         "board_id": "554cfa7978532d03004f0077",
         "crowdedness": 1,
         "friends": [],
-        "funFactor": 2,
+        "funFactor": 4,
         "hollowness": 2,
         "otherFriends": 0,
         "sessionDate": "2015-04-11T18:03:00.000Z",
@@ -2281,7 +2281,7 @@
             "archived": false,
             "category": "Shortboard",
             "default": false,
-            "name": "sled - Hayden",
+            "name": "sled",
             "size": "6'4\""
         },
         "board_id": "56f638c9178e2503002b1e15",
