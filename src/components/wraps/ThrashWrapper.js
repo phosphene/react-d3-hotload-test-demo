@@ -53,7 +53,7 @@ class ThrashWrapper extends React.Component {
                     </div>
                     <div className="col-xs-2">
                         <div id="chart-ring-day">
-                            <strong>Month</strong>
+                            <strong>Day</strong>
                             <a className="reset" onClick={()=>clickReset("chart-ring-day")} style={cursorStyle}> reset</a>
                             <div className="clearfix"></div>
                         </div>
